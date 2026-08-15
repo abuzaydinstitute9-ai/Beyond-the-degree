@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Beyond the Degree — Deen, Degree & Destiny | 5 Day Campus Preparation Programme</title>
+<meta name="description" content="A 5 day online campus preparation programme for freshers. Prepare your Deen, your academics, your skills and your future — before you resume.">
+
+<!-- ============================================================
+     EDITOR NOTES (for Abu Zayd / administrator)
+     - Logo: replace the CSS wordmark badge (search "LOGO MARK") with
+       an <img> tag once the official Beyond the Degree logo file is
+       supplied. Recommended: base64-embed it so the file stays a
+       single portable HTML file, matching your usual workflow.
+     - Tutor photo: same approach — search "TUTOR PHOTO" below.
+     - All editable programme details (dates, price, payment info,
+       WhatsApp numbers, links) live in one place: the CONFIG object
+       near the top of the <script> at the bottom of this file.
+     - Workbook PDF: the download button currently points to
+       "beyond-the-degree-workbook.pdf". Place the real workbook PDF
+       next to this HTML file with that exact name (or update
+       CONFIG.workbookFile) once it's produced.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --green-950:#0b2818;
+    --green-800:#12432b;
+    --green-700:#175c39;
+    --green-600:#1d7a49;
+    --green-500:#249157;
+    --green-100:#e4f1e8;
+    --green-50:#f2f8f4;
+    --ink:#12140f;
+    --ink-soft:#3c4038;
+    --paper:#fffefb;
+    --paper-dim:#f7f6f1;
+    --line:#dfe3da;
+    --white:#ffffff;
+    --shadow: 0 18px 40px -20px rgba(11,40,24,0.35);
+    --radius: 14px;
+    --maxw: 1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:600;
+    line-height:1.12;
+    margin:0 0 .5em 0;
+    letter-spacing:-0.01em;
+    color:var(--green-950);
+  }
+  p{margin:0 0 1em 0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--green-600);
+    font-weight:600;
+    margin-bottom:.6em;
+    display:flex;
+    align-items:center;
+    gap:.5em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:20px;height:2px;
+    background:var(--green-600);
+    display:inline-block;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+  section{padding:64px 0;}
+  .section-tight{padding:48px 0;}
+  @media(min-width:820px){ section{padding:96px 0;} }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5em;
+    padding:15px 26px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:.98rem;
+    text-decoration:none;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    font-family:'Inter',sans-serif;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{
+    background:var(--green-600);
+    color:#fff;
+    box-shadow:var(--shadow);
+  }
+  .btn-primary:hover{background:var(--green-700);}
+  .btn-outline{
+    background:transparent;
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink);color:#fff;}
+  .btn-light{
+    background:#fff;
+    color:var(--green-700);
+  }
+  .btn-block{width:100%;}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,254,251,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 20px;
+    max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+  /* LOGO MARK — swap for supplied logo image when available */
+  .logo-mark{
+    width:40px;height:40px;border-radius:10px;
+    background:linear-gradient(155deg,var(--green-600),var(--green-950));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;
+    flex-shrink:0;
+  }
+  .brand-text{line-height:1.15;}
+  .brand-text strong{
+    display:block;font-family:'Fraunces',serif;font-weight:700;font-size:1rem;color:var(--green-950);
+    letter-spacing:.01em;
+  }
+  .brand-text span{
+    display:block;font-size:.68rem;color:var(--green-600);letter-spacing:.08em;
+    font-family:'JetBrains Mono',monospace;text-transform:uppercase;
+  }
+  .header-cta{display:flex;align-items:center;gap:10px;}
+  .header-cta .btn{padding:10px 18px;font-size:.85rem;}
+  .hide-mobile{display:none;}
+  @media(min-width:720px){.hide-mobile{display:inline-flex;}}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 85% -10%, var(--green-100) 0%, transparent 55%),
+      var(--paper);
+    padding:56px 0 48px;
+    text-align:center;
+  }
+  .hero-badge{
+    width:76px;height:76px;border-radius:20px;margin:0 auto 22px;
+    background:linear-gradient(155deg,var(--green-600),var(--green-950));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:1.9rem;
+    box-shadow:var(--shadow);
+  }
+  .hero h1{
+    font-size:clamp(1.9rem,6vw,3.1rem);
+    max-width:820px;margin:0 auto .45em;
+  }
+  .hero-sub{
+    max-width:640px;margin:0 auto 28px;
+    color:var(--ink-soft);font-size:1.05rem;
+  }
+  .hero-strip{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.82rem;font-weight:600;color:var(--green-800);
+    margin:0 auto 30px;
+  }
+  .hero-strip span{padding:6px 16px;}
+  .hero-strip .divider{color:var(--line);}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+
+  /* ---------- Section headers ---------- */
+  .section-head{max-width:680px;margin:0 auto 40px;text-align:center;}
+  .section-head h2{font-size:clamp(1.5rem,4vw,2.15rem);}
+  .section-head p{color:var(--ink-soft);}
+  .align-left{text-align:left;margin-left:0;}
+
+  /* ---------- About / pillars ---------- */
+  .pillars{
+    display:grid;gap:16px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:640px){.pillars{grid-template-columns:1fr 1fr;}}
+  @media(min-width:980px){.pillars{grid-template-columns:repeat(5,1fr);}}
+  .pillar{
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 18px;
+  }
+  .pillar .tag{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;
+    color:var(--green-600);text-transform:uppercase;letter-spacing:.08em;font-weight:600;
+    margin-bottom:8px;display:block;
+  }
+  .pillar h3{font-size:1.05rem;margin-bottom:.35em;}
+  .pillar p{font-size:.92rem;color:var(--ink-soft);margin:0;}
+
+  /* ---------- Why block ---------- */
+  .why-band{
+    background:var(--green-950);
+    color:#f4f7f2;
+  }
+  .why-band h2{color:#fff;}
+  .why-band .section-head p{color:#c9d8cc;}
+  .chip-grid{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:34px;
+  }
+  .chip{
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:999px;
+    padding:8px 16px;
+    font-size:.85rem;
+    color:#e5eee2;
+  }
+  .quote-block{
+    text-align:center;
+    font-family:'Fraunces',serif;
+    font-size:clamp(1.25rem,3.4vw,1.7rem);
+    color:#fff;
+    max-width:640px;margin:0 auto;
+    font-weight:500;
+    font-style:italic;
+  }
+
+  /* ---------- Curriculum ---------- */
+  .day-list{display:grid;gap:18px;}
+  .day-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 24px;
+    background:var(--paper);
+    display:grid;gap:16px;
+  }
+  @media(min-width:760px){
+    .day-card{grid-template-columns:110px 1fr;align-items:start;}
+  }
+  .day-num{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--green-600);
+    font-weight:600;
+  }
+  .day-num .n{
+    font-family:'Fraunces',serif;
+    font-size:2.6rem;
+    color:var(--green-950);
+    line-height:1;
+    display:block;
+  }
+  .day-num .l{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;}
+  .day-card h3{font-size:1.25rem;margin-bottom:.35em;}
+  .day-card p{color:var(--ink-soft);margin-bottom:14px;}
+  .keyword-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .keyword-row span{
+    background:var(--green-50);
+    border:1px solid var(--green-100);
+    color:var(--green-800);
+    font-size:.78rem;
+    padding:5px 11px;
+    border-radius:999px;
+  }
+  .day-question{
+    margin-top:12px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--green-700);
+    font-size:1.05rem;
+  }
+
+  /* ---------- Tutor ---------- */
+  .tutor{
+    display:grid;gap:28px;
+    align-items:center;
+  }
+  @media(min-width:760px){.tutor{grid-template-columns:220px 1fr;}}
+  .tutor-photo{
+    width:100%;max-width:220px;aspect-ratio:1/1;
+    border-radius:18px;
+    background:linear-gradient(155deg,var(--green-100),var(--paper-dim));
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto;
+    color:var(--green-600);
+    font-family:'Fraunces',serif;font-size:.9rem;text-align:center;padding:14px;
+  }
+  /* TUTOR PHOTO — replace .tutor-photo contents with an <img> once supplied */
+  .tutor-copy h3{font-size:1.5rem;}
+  .tutor-copy p{color:var(--ink-soft);}
+  .tutor-works{
+    margin-top:16px;
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .tutor-works .tag{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--green-600);font-weight:600;display:block;margin-bottom:10px;
+  }
+  .tutor-works ul{margin:0;padding-left:1.1em;color:var(--ink-soft);}
+  .tutor-works li{margin-bottom:4px;}
+
+  /* ---------- Benefits ---------- */
+  .benefit-grid{display:grid;gap:16px;grid-template-columns:1fr;}
+  @media(min-width:640px){.benefit-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:980px){.benefit-grid{grid-template-columns:repeat(3,1fr);}}
+  .benefit-card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;background:var(--paper-dim);
+  }
+  .benefit-card .ic{
+    width:38px;height:38px;border-radius:10px;background:var(--green-600);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:700;margin-bottom:14px;
+  }
+  .benefit-card h3{font-size:1.05rem;margin-bottom:.35em;}
+  .benefit-card p{font-size:.9rem;color:var(--ink-soft);margin:0;}
+
+  /* ---------- Workbook ---------- */
+  .workbook-band{
+    background:var(--green-50);
+    border-top:1px solid var(--green-100);
+    border-bottom:1px solid var(--green-100);
+  }
+  .workbook-grid{display:grid;gap:32px;}
+  @media(min-width:860px){.workbook-grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .workbook-cover{
+    background:linear-gradient(160deg,var(--green-950),var(--green-700));
+    border-radius:18px;color:#fff;padding:34px 28px;
+    box-shadow:var(--shadow);
+    aspect-ratio:3/4;max-width:340px;margin:0 auto;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .workbook-cover .wc-top .eyebrow{color:#bfe3cb;}
+  .workbook-cover .wc-top .eyebrow::before{background:#bfe3cb;}
+  .workbook-cover h3{color:#fff;font-size:1.5rem;margin-bottom:.3em;}
+  .workbook-cover p{color:#d5e8da;font-size:.92rem;}
+  .workbook-cover .wc-bottom{
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;
+    color:#a9d4b7;text-transform:uppercase;
+  }
+  .section-list{
+    list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;
+  }
+  .section-list li{
+    font-size:.9rem;color:var(--ink-soft);
+    padding-left:1.2em;position:relative;
+  }
+  .section-list li::before{
+    content:"";position:absolute;left:0;top:.55em;
+    width:6px;height:6px;background:var(--green-600);border-radius:50%;
+  }
+  .thinking-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .thinking-tags span{
+    background:#fff;border:1px solid var(--green-100);color:var(--green-800);
+    font-size:.78rem;padding:5px 12px;border-radius:999px;
+  }
+
+  /* ---------- Who should register ---------- */
+  .who-list{display:grid;gap:12px;grid-template-columns:1fr;}
+  @media(min-width:640px){.who-list{grid-template-columns:1fr 1fr;}}
+  .who-item{
+    display:flex;gap:12px;align-items:flex-start;
+    padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--paper-dim);
+  }
+  .who-item .check{
+    flex-shrink:0;width:24px;height:24px;border-radius:50%;
+    background:var(--green-600);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:.8rem;font-weight:700;
+  }
+  .who-item p{margin:0;font-size:.92rem;color:var(--ink-soft);}
+
+  /* ---------- Registration ---------- */
+  .register-band{background:var(--paper-dim);border-top:1px solid var(--line);}
+  .register-shell{
+    max-width:640px;margin:0 auto;
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .register-top{
+    background:linear-gradient(155deg,var(--green-700),var(--green-950));
+    color:#fff;padding:26px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .register-top h3{color:#fff;font-size:1.3rem;margin:0;}
+  .price-pill{
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.3);
+    padding:6px 14px;border-radius:999px;
+    font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.85rem;
+    white-space:nowrap;
+  }
+  .register-steps{padding:28px;}
+  .step-track{
+    display:flex;justify-content:space-between;margin-bottom:26px;gap:6px;
+  }
+  .step-track .dot{
+    flex:1;height:4px;border-radius:4px;background:var(--line);
+  }
+  .step-track .dot.active{background:var(--green-600);}
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;font-size:.83rem;font-weight:600;color:var(--green-950);margin-bottom:6px;
+  }
+  .field .req{color:#b3261e;}
+  .field input,.field textarea,.field select{
+    width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;
+    font-family:'Inter',sans-serif;font-size:.95rem;background:#fff;color:var(--ink);
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{
+    outline:none;border-color:var(--green-600);box-shadow:0 0 0 3px var(--green-100);
+  }
+  .field textarea{resize:vertical;min-height:64px;}
+  .field .err{
+    display:none;color:#b3261e;font-size:.78rem;margin-top:5px;
+  }
+  .field.invalid input,.field.invalid textarea{border-color:#b3261e;}
+  .field.invalid .err{display:block;}
+  .form-row-2{display:grid;gap:16px;}
+  @media(min-width:520px){.form-row-2{grid-template-columns:1fr 1fr;}}
+
+  .step-panel{display:none;}
+  .step-panel.active{display:block;animation:fadeIn .35s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .status-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--green-50);color:var(--green-800);
+    border:1px solid var(--green-100);
+    padding:8px 14px;border-radius:999px;
+    font-size:.85rem;font-weight:600;margin-bottom:16px;
+  }
+  .status-badge .dot-live{
+    width:8px;height:8px;background:var(--green-600);border-radius:50%;
+  }
+  .payment-card{
+    background:var(--green-50);border:1px solid var(--green-100);border-radius:14px;
+    padding:18px 20px;margin-bottom:18px;
+  }
+  .payment-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--green-100);font-size:.92rem;}
+  .payment-row:last-child{border-bottom:none;}
+  .payment-row .k{color:var(--ink-soft);}
+  .payment-row .v{font-weight:700;color:var(--green-950);font-family:'JetBrains Mono',monospace;}
+  .note-box{
+    font-size:.85rem;color:var(--ink-soft);
+    background:var(--paper-dim);border-left:3px solid var(--green-600);
+    padding:12px 14px;border-radius:8px;margin-bottom:18px;
+  }
+  .confirm-box{text-align:center;padding:6px 0 8px;}
+  .confirm-icon{
+    width:56px;height:56px;border-radius:50%;background:var(--green-600);color:#fff;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+    font-size:1.5rem;font-weight:700;
+  }
+  .confirm-box h4{font-size:1.2rem;margin-bottom:.35em;}
+  .confirm-box p{color:var(--ink-soft);font-size:.92rem;}
+  .step-actions{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap;}
+  .step-actions .btn{flex:1;min-width:140px;}
+  .back-link{
+    background:none;border:none;color:var(--ink-soft);font-size:.85rem;
+    text-decoration:underline;cursor:pointer;padding:8px 0;
+  }
+
+  /* ---------- Google Meet / Certificate mini sections ---------- */
+  .info-band{display:grid;gap:16px;grid-template-columns:1fr;}
+  @media(min-width:760px){.info-band{grid-template-columns:1fr 1fr;}}
+  .info-card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;background:var(--paper-dim);
+  }
+  .info-card .ic{
+    width:42px;height:42px;border-radius:10px;background:var(--green-950);color:#fff;
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.2rem;
+  }
+  .info-card h3{font-size:1.1rem;}
+  .info-card p{color:var(--ink-soft);font-size:.92rem;margin-bottom:0;}
+  .info-card .fine{
+    margin-top:10px;font-size:.78rem;color:var(--green-700);
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;
+    padding:18px 4px;font-family:'Fraunces',serif;font-size:1.02rem;color:var(--green-950);
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    cursor:pointer;font-weight:600;
+  }
+  .faq-q .plus{
+    flex-shrink:0;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--green-600);
+    color:var(--green-600);display:flex;align-items:center;justify-content:center;
+    font-size:1rem;transition:transform .2s ease;
+  }
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .25s ease;
+    color:var(--ink-soft);font-size:.92rem;
+  }
+  .faq-a-inner{padding:0 4px 18px;}
+  .faq-item.open .faq-a{max-height:220px;}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    background:linear-gradient(155deg,var(--green-950),var(--green-700));
+    color:#fff;text-align:center;
+  }
+  .final-cta h2{color:#fff;}
+  .final-cta .lines{
+    font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;
+    color:#e6f0e8;max-width:420px;margin:18px auto 26px;
+  }
+  .final-cta .lines div{margin-bottom:4px;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--green-950);color:#cfe0d3;padding:48px 0 26px;}
+  .footer-top{
+    display:grid;gap:28px;margin-bottom:28px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:760px){.footer-top{grid-template-columns:1.3fr 1fr 1fr;}}
+  .footer-brand .logo-mark{margin-bottom:12px;}
+  .footer-brand strong{color:#fff;font-family:'Fraunces',serif;font-size:1.1rem;display:block;}
+  .footer-brand span{font-size:.8rem;color:#9dc0a5;display:block;margin-top:2px;}
+  .footer-brand p{font-size:.85rem;color:#a9c6ae;margin-top:12px;max-width:280px;}
+  footer h4{
+    color:#fff;font-family:'JetBrains Mono',monospace;font-size:.72rem;
+    text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;
+  }
+  footer ul{list-style:none;margin:0;padding:0;}
+  footer li{margin-bottom:9px;font-size:.88rem;}
+  footer a{color:#cfe0d3;text-decoration:none;}
+  footer a:hover{color:#fff;text-decoration:underline;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.12);
+    padding-top:20px;
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;
+    font-size:.78rem;color:#8fb197;
+  }
+
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  :focus-visible{outline:3px solid var(--green-500);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <span class="logo-mark" aria-hidden="true">BD</span>
+      <span class="brand-text">
+        <strong>Beyond the Degree</strong>
+        <span>Deen · Degree · Destiny</span>
+      </span>
+    </a>
+    <div class="header-cta">
+      <a href="#faq" class="btn btn-outline hide-mobile">FAQ</a>
+      <a href="#register" class="btn btn-primary">Register Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-badge" aria-hidden="true">BD</div>
+    <h1>Do not enter university only prepared to earn a degree. Enter prepared to build a life.</h1>
+    <p class="hero-sub">Beyond the Degree is a five day online programme designed to help freshers prepare for the realities of campus life, balance Deen and academics, develop valuable skills, think creatively, build financial independence and prepare for life after graduation.</p>
+    <div class="hero-strip">
+      <span>5 Days</span><span class="divider">|</span>
+      <span>Live on Google Meet</span><span class="divider">|</span>
+      <span id="heroPrice">₦3,000</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#register" class="btn btn-primary">Register Now</a>
+      <a href="#programme" class="btn btn-outline">Explore the Programme</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">About the programme</div>
+      <h2>What Is Beyond the Degree?</h2>
+      <p>Gaining admission is only the beginning. Higher institution brings greater freedom, new friendships, academic pressure, distractions, opportunities, responsibilities and decisions that can shape the direction of your life. Most students prepare academically for admission — few prepare for the environment they're about to enter. Beyond the Degree helps you prepare before you arrive, across five areas that matter most.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="tag">01 · Deen</span>
+        <h3>Deen</h3>
+        <p>How to remain connected to Allah and protect your Islamic values in a new environment.</p>
+      </div>
+      <div class="pillar">
+        <span class="tag">02 · Academics</span>
+        <h3>Academics</h3>
+        <p>How to manage studies, time, assignments and academic responsibilities effectively.</p>
+      </div>
+      <div class="pillar">
+        <span class="tag">03 · Growth</span>
+        <h3>Personal Growth</h3>
+        <p>How to develop discipline, emotional awareness, healthy relationships and responsible decision making.</p>
+      </div>
+      <div class="pillar">
+        <span class="tag">04 · Skills</span>
+        <h3>Skills & Creativity</h3>
+        <p>How to think beyond classroom learning, identify problems, develop useful skills and become more creative.</p>
+      </div>
+      <div class="pillar">
+        <span class="tag">05 · Finance</span>
+        <h3>Financial Independence</h3>
+        <p>How to begin thinking about value creation, entrepreneurship and responsible financial preparation while still in school.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section class="why-band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">Why this programme</div>
+      <h2>University Is More Than the Classroom</h2>
+      <p>Many students enter higher institution prepared for lectures but unprepared for the wider realities of campus life. Beyond the Degree helps you understand what's ahead — before it teaches itself to you the hard way.</p>
+    </div>
+    <div class="chip-grid">
+      <span class="chip">Campus expectations vs reality</span>
+      <span class="chip">Peer pressure</span>
+      <span class="chip">Distractions</span>
+      <span class="chip">Friendships & relationships</span>
+      <span class="chip">Time management</span>
+      <span class="chip">Worship and academics</span>
+      <span class="chip">Mental wellbeing</span>
+      <span class="chip">Creativity & problem solving</span>
+      <span class="chip">Skills & entrepreneurship</span>
+      <span class="chip">Financial preparation</span>
+      <span class="chip">Life after graduation</span>
+    </div>
+    <p class="quote-block">"Your university years should not happen accidentally. Enter with direction."</p>
+  </div>
+</section>
+
+<!-- ================= 5 DAY PROGRAMME ================= -->
+<section id="programme">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">The curriculum</div>
+      <h2>The Five Day Programme</h2>
+      <p>Five live sessions, each building on the last — from understanding campus reality to preparing for life after graduation.</p>
+    </div>
+
+    <div class="day-list">
+      <article class="day-card">
+        <div class="day-num"><span class="n">01</span><span class="l">Day One</span></div>
+        <div>
+          <h3>Welcome to Campus: Expectation vs Reality</h3>
+          <p>Understanding what students may encounter in higher institution — freedom, responsibility, distractions, peer pressure, friendships, relationships, social media and maintaining focus. Campus can offer great opportunities, but can also become a source of distraction without intention.</p>
+          <div class="keyword-row">
+            <span>Campus reality</span><span>Freedom & responsibility</span><span>Peer pressure</span>
+            <span>Friendships</span><span>Relationships</span><span>Social media</span>
+            <span>Protecting your Deen</span><span>Wise decisions</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card">
+        <div class="day-num"><span class="n">02</span><span class="l">Day Two</span></div>
+        <div>
+          <h3>The Balance: Deen, Academics & Wellbeing</h3>
+          <p>Balance does not mean giving everything equal time — it means giving the right things the right amount of attention. We cover time management, worship, academic responsibilities, effective studying, mental wellbeing, rest, discipline and avoiding procrastination.</p>
+          <div class="keyword-row">
+            <span>Time management</span><span>Worship</span><span>Effective studying</span>
+            <span>Mental wellbeing</span><span>Discipline</span><span>Sustainable routine</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card">
+        <div class="day-num"><span class="n">03</span><span class="l">Day Three</span></div>
+        <div>
+          <h3>Think Beyond the Degree</h3>
+          <p>A challenge to stop thinking only about obtaining a degree, and start thinking about what you can build, create and contribute. We explore creative and critical thinking, problem solving, valuable skills, networking, communication and digital skills.</p>
+          <div class="keyword-row">
+            <span>Creative thinking</span><span>Critical thinking</span><span>Problem solving</span>
+            <span>Networking</span><span>Digital skills</span><span>Creating value</span>
+          </div>
+          <p class="day-question">"What problem can I solve?"</p>
+        </div>
+      </article>
+
+      <article class="day-card">
+        <div class="day-num"><span class="n">04</span><span class="l">Day Four</span></div>
+        <div>
+          <h3>From Student to Founder</h3>
+          <p>You can become an employee, professional, entrepreneur, researcher, freelancer or founder — this day is about learning to create value instead of waiting only for opportunities to be created for you. We cover value creation, freelancing, digital services, skill monetisation and financial discipline, with no promises of getting rich quickly.</p>
+          <div class="keyword-row">
+            <span>Value creation</span><span>Freelancing</span><span>Skill monetisation</span>
+            <span>Starting small</span><span>Building a portfolio</span><span>Financial discipline</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card">
+        <div class="day-num"><span class="n">05</span><span class="l">Day Five</span></div>
+        <div>
+          <h3>After Campus: What Next?</h3>
+          <p>Preparation for life after graduation should begin long before your final year. We cover employment, entrepreneurship, internships, scholarships, further education, portfolio building, networking and financial preparation.</p>
+          <div class="keyword-row">
+            <span>Graduation prep</span><span>Employment</span><span>Scholarships</span>
+            <span>Portfolio building</span><span>Networking</span><span>Financial preparation</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TUTOR ================= -->
+<section id="tutor" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">Meet the tutor</div>
+      <h2>Learn From Someone Who Understands the Journey</h2>
+    </div>
+    <div class="tutor">
+      <!-- TUTOR PHOTO — replace with <img src="..." alt="Abu Zayd Suleiman Adam Gbale"> once supplied -->
+      <div class="tutor-photo" aria-hidden="true">Tutor photograph<br>to be added</div>
+      <div class="tutor-copy">
+        <h3>Abu Zayd Suleiman Adam Gbale</h3>
+        <p>A writer, observer, university student, researcher and educator with a strong interest in Islamic studies, personal development, university life and purposeful living.</p>
+        <p>He is not approaching this programme merely as someone giving theoretical advice. As a university student who has experienced the realities of higher institution, he understands many of the opportunities, challenges, distractions and decisions students encounter on campus.</p>
+        <p>His teaching approach combines Islamic values, academic responsibility, personal development, practical thinking, creativity and preparation for life beyond university.</p>
+        <div class="tutor-works">
+          <span class="tag">Selected works</span>
+          <ul>
+            <li>University Life: Navigating Growth, Challenges and Opportunities</li>
+            <li>Purpose Before Degree</li>
+            <li>This Is Success: Keys to Attaining Greatness in Both Worlds</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT PARTICIPANTS RECEIVE ================= -->
+<section id="benefits">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">What you receive</div>
+      <h2>Everything Included in Your Registration</h2>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="ic">01</div>
+        <h3>5 Live Google Meet Sessions</h3>
+        <p>Interactive online teaching across five days, delivered live.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="ic">02</div>
+        <h3>Beyond the Degree Workbook</h3>
+        <p>A practical PDF workbook with exercises, reflection questions and planning tools.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="ic">03</div>
+        <h3>Goal Setting Guide</h3>
+        <p>Tools for setting short term and long term goals for your university journey.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="ic">04</div>
+        <h3>Personal Development Resources</h3>
+        <p>Resources covering thinking, relationships, discipline, focus and growth.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="ic">05</div>
+        <h3>WhatsApp Community</h3>
+        <p>A dedicated group for programme communication, reminders, discussions and resources.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="ic">06</div>
+        <h3>Certificate of Participation</h3>
+        <p>Issued after the programme to participants who attend at least four of five sessions and complete the final activity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORKBOOK ================= -->
+<section class="workbook-band" id="workbook">
+  <div class="wrap">
+    <div class="workbook-grid">
+      <div class="workbook-cover" aria-hidden="true">
+        <div class="wc-top">
+          <div class="eyebrow">Gift for participants</div>
+          <h3>Beyond the Degree Workbook</h3>
+          <p>A Practical Guide to Building a Purposeful University Life</p>
+        </div>
+        <div class="wc-bottom">A4 · Reflection & Planning</div>
+      </div>
+      <div>
+        <div class="eyebrow">The workbook</div>
+        <h2 style="font-size:1.7rem;">A Practical Guide to Building a Purposeful University Life</h2>
+        <p>This workbook is a gift for registered participants, designed to help you think intentionally about your university journey — to reflect, set meaningful goals, understand yourself, develop healthy habits, identify valuable skills, think creatively and prepare for life beyond graduation.</p>
+        <ul class="section-list">
+          <li>My University Vision</li>
+          <li>My Short Term Goals</li>
+          <li>My Long Term Goals</li>
+          <li>My Deen Goals</li>
+          <li>My Academic Goals</li>
+          <li>My Skill Development Goals</li>
+          <li>My Financial Goals</li>
+          <li>My Mental Wellbeing Plan</li>
+          <li>The People I Need Around Me</li>
+          <li>My Personal Boundaries</li>
+          <li>Problems I Can Solve</li>
+          <li>Skills I Can Monetise</li>
+          <li>My University Portfolio Plan</li>
+          <li>My Four Year Roadmap</li>
+          <li>Life After Graduation Plan</li>
+        </ul>
+        <div class="thinking-tags">
+          <span>Fixed Thinking</span><span>Growth Thinking</span><span>Critical Thinking</span>
+          <span>Creative Thinking</span><span>Strategic Thinking</span><span>Problem Solving</span><span>Reflective Thinking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO SHOULD REGISTER ================= -->
+<section id="who">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">Who this is for</div>
+      <h2>Who Should Register?</h2>
+    </div>
+    <div class="who-list">
+      <div class="who-item"><span class="check">✓</span><p>Students who have recently gained admission.</p></div>
+      <div class="who-item"><span class="check">✓</span><p>Students preparing to resume higher institution.</p></div>
+      <div class="who-item"><span class="check">✓</span><p>Students who want to understand campus life before arriving.</p></div>
+      <div class="who-item"><span class="check">✓</span><p>Students who want to balance Deen and academics.</p></div>
+      <div class="who-item"><span class="check">✓</span><p>Students who want to develop valuable skills while studying.</p></div>
+      <div class="who-item"><span class="check">✓</span><p>Students who want to begin preparing financially before graduation.</p></div>
+      <div class="who-item"><span class="check">✓</span><p>Students who want to approach university with purpose and direction.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REGISTRATION ================= -->
+<section class="register-band" id="register">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">Registration</div>
+      <h2>Register for Beyond the Degree</h2>
+      <p>Complete the form, review payment details, confirm your payment, then send your registration to WhatsApp.</p>
+    </div>
+
+    <div class="register-shell">
+      <div class="register-top">
+        <h3>Registration</h3>
+        <span class="price-pill" id="regPrice">₦3,000</span>
+      </div>
+
+      <div class="register-steps">
+        <div class="step-track" aria-hidden="true">
+          <div class="dot active" data-step-dot="1"></div>
+          <div class="dot" data-step-dot="2"></div>
+          <div class="dot" data-step-dot="3"></div>
+          <div class="dot" data-step-dot="4"></div>
+        </div>
+
+        <!-- STEP 1: FORM -->
+        <div class="step-panel active" data-step="1">
+          <form id="regForm" novalidate>
+            <div class="field" data-field="fullName">
+              <label for="fullName">Full Name <span class="req">*</span></label>
+              <input type="text" id="fullName" name="fullName" required>
+              <div class="err">Please enter your full name.</div>
+            </div>
+            <div class="form-row-2">
+              <div class="field" data-field="whatsapp">
+                <label for="whatsapp">WhatsApp Number <span class="req">*</span></label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="e.g. 0803xxxxxxx" required>
+                <div class="err">Please enter a valid WhatsApp number.</div>
+              </div>
+              <div class="field" data-field="age">
+                <label for="age">Age <span class="req">*</span></label>
+                <input type="number" id="age" name="age" min="14" max="35" required>
+                <div class="err">Please enter your age.</div>
+              </div>
+            </div>
+            <div class="field" data-field="institution">
+              <label for="institution">Institution or Intended Institution <span class="req">*</span></label>
+              <input type="text" id="institution" name="institution" required>
+              <div class="err">Please enter your institution.</div>
+            </div>
+            <div class="field" data-field="course">
+              <label for="course">Course or Intended Course <span class="req">*</span></label>
+              <input type="text" id="course" name="course" required>
+              <div class="err">Please enter your course.</div>
+            </div>
+            <div class="field" data-field="why">
+              <label for="why">Why do you want to participate in Beyond the Degree? <span class="req">*</span></label>
+              <textarea id="why" name="why" required></textarea>
+              <div class="err">Please share a short answer.</div>
+            </div>
+            <div class="field" data-field="concern">
+              <label for="concern">What are you most concerned about concerning campus life? <span class="req">*</span></label>
+              <textarea id="concern" name="concern" required></textarea>
+              <div class="err">Please share a short answer.</div>
+            </div>
+            <div class="field" data-field="expect">
+              <label for="expect">What do you expect to gain from this programme? <span class="req">*</span></label>
+              <textarea id="expect" name="expect" required></textarea>
+              <div class="err">Please share a short answer.</div>
+            </div>
+            <div class="field" data-field="skill">
+              <label for="skill">What skill would you like to develop while in university? <span class="req">*</span></label>
+              <input type="text" id="skill" name="skill" required>
+              <div class="err">Please share a short answer.</div>
+            </div>
+            <div class="field" data-field="earning">
+              <label for="earning">What do you currently know about earning from skills?</label>
+              <textarea id="earning" name="earning"></textarea>
+            </div>
+            <div class="field" data-field="fiveYears">
+              <label for="fiveYears">Where do you see yourself five years after graduation? <span class="req">*</span></label>
+              <textarea id="fiveYears" name="fiveYears" required></textarea>
+              <div class="err">Please share a short answer.</div>
+            </div>
+
+            <div class="step-actions">
+              <button type="submit" class="btn btn-primary btn-block">Continue to Payment</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- STEP 2: PAYMENT -->
+        <div class="step-panel" data-step="2">
+          <div class="status-badge"><span class="dot-live"></span> Step 2 of 4 · Payment</div>
+          <h4 style="font-family:'Fraunces',serif;color:var(--green-950);margin-bottom:8px;">Complete Your Payment</h4>
+          <p style="color:var(--ink-soft);margin-bottom:18px;">Pay the registration fee below, then confirm your payment to continue.</p>
+          <div class="payment-card">
+            <div class="payment-row"><span class="k">Registration fee</span><span class="v" id="payAmount">₦3,000</span></div>
+            <div class="payment-row"><span class="k">Account Name</span><span class="v" id="payAcctName">—</span></div>
+            <div class="payment-row"><span class="k">Bank Name</span><span class="v" id="payBankName">—</span></div>
+            <div class="payment-row"><span class="k">Account Number</span><span class="v" id="payAcctNumber">—</span></div>
+          </div>
+          <div class="note-box" id="payInstructions">Payment instructions will appear here once configured by the administrator.</div>
+          <div class="note-box">After paying, keep a screenshot or copy of your payment receipt — you'll attach it manually when you send your registration on WhatsApp. Payment is verified manually by the administrator; this website does not verify payment automatically.</div>
+          <div class="step-actions">
+            <button type="button" class="btn btn-primary btn-block" id="confirmPaymentBtn">I Have Made Payment</button>
+          </div>
+          <button type="button" class="back-link" data-back="1">← Back to registration form</button>
+        </div>
+
+        <!-- STEP 3: SUBMITTED + WORKBOOK -->
+        <div class="step-panel" data-step="3">
+          <div class="confirm-box">
+            <div class="confirm-icon">✓</div>
+            <h4>Registration Details Submitted</h4>
+            <p>Your registration details have been recorded on this device. As a gift, you can now download your free Beyond the Degree Workbook.</p>
+          </div>
+          <div class="note-box">This download is a participant gift — it is not your certificate. The Certificate of Participation is issued only after the programme, to eligible participants.</div>
+          <div class="step-actions">
+            <a class="btn btn-primary btn-block" id="downloadWorkbookBtn" href="beyond-the-degree-workbook.pdf" download>Download Workbook PDF</a>
+          </div>
+          <div class="step-actions">
+            <button type="button" class="btn btn-outline btn-block" id="toWhatsappStepBtn">Continue to Complete Registration</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: WHATSAPP SEND + CONFIRMATION -->
+        <div class="step-panel" data-step="4">
+          <div class="confirm-box" id="preWaBlock">
+            <h4 style="text-align:left;">Complete Your Registration</h4>
+            <p style="text-align:left;">Send your completed registration to the programme administrator on WhatsApp. Attach your payment receipt manually before sending — this site does not send the receipt for you automatically.</p>
+          </div>
+          <div class="step-actions" id="waActionRow">
+            <a class="btn btn-primary btn-block" id="sendWhatsappBtn" href="#" target="_blank" rel="noopener">Send Registration to WhatsApp</a>
+          </div>
+
+          <div id="finalConfirm" style="display:none;">
+            <div class="confirm-box">
+              <div class="confirm-icon">✓</div>
+              <h4>Registration Submitted</h4>
+              <p>Your registration details have been sent to the programme administrator. Your payment will be verified manually. Once confirmed, you'll receive instructions for joining the official WhatsApp group, where all Google Meet links and programme resources will be shared.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GOOGLE MEET + CERTIFICATE ================= -->
+<section>
+  <div class="wrap">
+    <div class="info-band">
+      <div class="info-card">
+        <div class="ic" aria-hidden="true">▣</div>
+        <h3>Live on Google Meet</h3>
+        <p>All five sessions are conducted live through Google Meet. You'll receive the relevant link through the official WhatsApp group before each session.</p>
+        <div class="fine">Links are shared privately — not posted publicly</div>
+      </div>
+      <div class="info-card">
+        <div class="ic" aria-hidden="true">★</div>
+        <h3>Certificate of Participation</h3>
+        <p>Beyond the Degree: Deen, Degree & Destiny. Eligible participants receive a digital Certificate of Participation after completing programme requirements — attending at least four of five sessions and completing the final activity.</p>
+        <div class="fine">Issued after the programme, not before</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" style="background:var(--paper-dim);">
+  <div class="wrap" style="max-width:760px;">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">Questions</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">How much is the programme? <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner"><span id="faqPrice">₦3,000</span>.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Where will the classes take place? <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">All sessions will be held live through Google Meet.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How will I receive the Google Meet link? <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">It will be shared through the official WhatsApp group after registration is confirmed.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Who is the programme for? <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Primarily freshers and students preparing to enter higher institution.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will I receive a certificate? <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Eligible participants will receive a Certificate of Participation after completing the programme requirements.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will I receive a workbook? <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Registered participants will receive the Beyond the Degree Workbook as a gift.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">When can I download the workbook? <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">After completing the registration process and confirming payment, the workbook download will be made available.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I invite my friends? <span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Participants are encouraged to share the programme with other freshers who may benefit from it.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Your University Journey Starts Before Resumption.</h2>
+    <div class="lines">
+      <div>Prepare your Deen.</div>
+      <div>Prepare your mind.</div>
+      <div>Prepare your academics.</div>
+      <div>Develop valuable skills.</div>
+      <div>Learn to create value.</div>
+      <div>Prepare for life after graduation.</div>
+    </div>
+    <p style="color:#d9e8db;max-width:420px;margin:0 auto 26px;">Do not wait until campus teaches you everything the hard way.</p>
+    <a href="#register" class="btn btn-light" id="finalCtaBtn">Register for ₦3,000</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-mark" aria-hidden="true">BD</span>
+        <strong>Beyond the Degree</strong>
+        <span>Deen · Degree · Destiny</span>
+        <p>A 5 Day Campus Preparation Programme for Freshers.</p>
+      </div>
+      <div>
+        <h4>Programme</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#programme">Five Day Curriculum</a></li>
+          <li><a href="#tutor">Meet the Tutor</a></li>
+          <li><a href="#workbook">The Workbook</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul id="footerContact">
+          <li><a href="#" id="footerWhatsapp">WhatsApp</a></li>
+          <li><a href="#" id="footerEmail">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Beyond the Degree. All rights reserved.</span>
+      <span>Organised by Abu Zayd Solutions</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ==========================================================
+     CONFIG — everything the administrator needs to edit lives
+     here. Update these values and the whole site updates.
+     ========================================================== */
+  const CONFIG = {
+    priceDisplay: "₦3,000",
+    priceRaw: "3,000",
+
+    // Payment details (fill in real details when available)
+    payment: {
+      accountName: "To be provided",
+      bankName: "To be provided",
+      accountNumber: "To be provided",
+      instructions: "Bank transfer details will be confirmed here. After paying, take a screenshot or save your receipt — you will attach it manually when sending your registration on WhatsApp."
+    },
+
+    // Administrator WhatsApp number in international format, no + or spaces
+    // e.g. Nigerian number 0803 123 4567 -> "2348031234567"
+    adminWhatsappNumber: "2349073528916",
+
+    // Contact footer
+    contactEmail: "adamusuleiman20001@gmail.com",
+    contactWhatsappDisplay: "+234 907 352 8916",
+
+    // Workbook file — place the actual PDF beside this HTML file
+    workbookFile: "beyond-the-degree-workbook.pdf",
+
+    // Optional: official WhatsApp community group link, shared after
+    // manual payment approval (not shown publicly on the page)
+    whatsappGroupLink: ""
+  };
+
+  /* ---------- Apply price everywhere ---------- */
+  document.querySelectorAll("#heroPrice").forEach(el => el.textContent = CONFIG.priceDisplay);
+  document.getElementById("regPrice").textContent = CONFIG.priceDisplay;
+  document.getElementById("payAmount").textContent = CONFIG.priceDisplay;
+  document.getElementById("faqPrice").textContent = CONFIG.priceDisplay;
+  document.getElementById("finalCtaBtn").textContent = "Register for " + CONFIG.priceDisplay;
+
+  /* ---------- Apply payment details ---------- */
+  document.getElementById("payAcctName").textContent = CONFIG.payment.accountName;
+  document.getElementById("payBankName").textContent = CONFIG.payment.bankName;
+  document.getElementById("payAcctNumber").textContent = CONFIG.payment.accountNumber;
+  document.getElementById("payInstructions").textContent = CONFIG.payment.instructions;
+
+  /* ---------- Footer contact links ---------- */
+  document.getElementById("footerWhatsapp").href = "https://wa.me/" + CONFIG.adminWhatsappNumber;
+  document.getElementById("footerWhatsapp").textContent = "WhatsApp: " + CONFIG.contactWhatsappDisplay;
+  document.getElementById("footerEmail").href = "mailto:" + CONFIG.contactEmail;
+  document.getElementById("footerEmail").textContent = CONFIG.contactEmail;
+
+  document.getElementById("downloadWorkbookBtn").href = CONFIG.workbookFile;
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ==========================================================
+     FAQ accordion
+     ========================================================== */
+  document.querySelectorAll(".faq-item").forEach(item => {
+    const q = item.querySelector(".faq-q");
+    q.addEventListener("click", () => {
+      const isOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+      if(!isOpen) item.classList.add("open");
+    });
+  });
+
+  /* ==========================================================
+     Registration flow
+     ========================================================== */
+  const form = document.getElementById("regForm");
+  const steps = document.querySelectorAll(".step-panel");
+  const dots = document.querySelectorAll("[data-step-dot]");
+  let registrationData = {};
+
+  function goToStep(n){
+    steps.forEach(s => s.classList.toggle("active", s.dataset.step === String(n)));
+    dots.forEach(d => d.classList.toggle("active", Number(d.dataset.stepDot) <= n));
+    document.getElementById("register").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  document.querySelectorAll("[data-back]").forEach(btn => {
+    btn.addEventListener("click", () => goToStep(Number(btn.dataset.back)));
+  });
+
+  const requiredFields = ["fullName","whatsapp","age","institution","course","why","concern","expect","skill","fiveYears"];
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    let valid = true;
+
+    requiredFields.forEach(name => {
+      const input = form.elements[name];
+      const fieldWrap = form.querySelector(`[data-field="${name}"]`);
+      const value = (input.value || "").trim();
+      if(!value){
+        valid = false;
+        fieldWrap.classList.add("invalid");
+      } else {
+        fieldWrap.classList.remove("invalid");
+      }
+    });
+
+    // basic WhatsApp number sanity check (digits, spaces, +, 7-15 chars)
+    const waVal = form.elements["whatsapp"].value.trim();
+    const waWrap = form.querySelector('[data-field="whatsapp"]');
+    if(waVal && !/^[0-9+\s-]{7,16}$/.test(waVal)){
+      valid = false;
+      waWrap.classList.add("invalid");
+    }
+
+    if(!valid){
+      form.querySelector(".invalid input, .invalid textarea")?.focus();
+      return;
+    }
+
+    // Collect data
+    const fd = new FormData(form);
+    registrationData = Object.fromEntries(fd.entries());
+
+    goToStep(2);
+  });
+
+  document.getElementById("confirmPaymentBtn").addEventListener("click", function(){
+    goToStep(3);
+  });
+
+  document.getElementById("toWhatsappStepBtn").addEventListener("click", function(){
+    buildWhatsappLink();
+    goToStep(4);
+  });
+
+  function buildWhatsappLink(){
+    const d = registrationData;
+    const lines = [
+      "Assalāmu ʿalaykum. I am registering for Beyond the Degree: Deen, Degree & Destiny.",
+      "",
+      "Name: " + (d.fullName || ""),
+      "WhatsApp Number: " + (d.whatsapp || ""),
+      "Age: " + (d.age || ""),
+      "Institution: " + (d.institution || ""),
+      "Course: " + (d.course || ""),
+      "Why I want to participate: " + (d.why || ""),
+      "My main concern about campus: " + (d.concern || ""),
+      "What I expect to gain: " + (d.expect || ""),
+      "Skill I want to develop: " + (d.skill || ""),
+      "What I know about earning from skills: " + (d.earning || ""),
+      "Where I see myself in five years: " + (d.fiveYears || ""),
+      "",
+      "I have paid the " + CONFIG.priceDisplay + " registration fee and attached my payment receipt."
+    ];
+    const message = encodeURIComponent(lines.join("\n"));
+    const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + message;
+    document.getElementById("sendWhatsappBtn").href = link;
+  }
+
+  document.getElementById("sendWhatsappBtn").addEventListener("click", function(){
+    // Give the WhatsApp tab a moment to open, then reveal final confirmation
+    setTimeout(() => {
+      document.getElementById("waActionRow").style.display = "none";
+      document.getElementById("preWaBlock").style.display = "none";
+      document.getElementById("finalConfirm").style.display = "block";
+    }, 400);
+  });
+
+})();
+</script>
+
+</body>
+</html>
