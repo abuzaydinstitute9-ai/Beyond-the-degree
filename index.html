@@ -1014,7 +1014,7 @@
         <div class="step-panel" data-step="4">
           <div class="confirm-box" id="preWaBlock">
             <h4 style="text-align:left;">Complete Your Registration</h4>
-            <p style="text-align:left;">Tap the button below to send your registration image straight to WhatsApp. On most phones, WhatsApp will open with the image and message ready — just pick the admin chat and send. Your payment proof can follow shortly after.</p>
+            <p style="text-align:left;">Tap the button below. Your registration image will download automatically, and WhatsApp will open directly on Abu Zayd's number with your message ready. Just attach the downloaded image and hit send — it will be the newest item in your gallery or downloads.</p>
           </div>
           <div class="step-actions" id="waActionRow">
             <button type="button" class="btn btn-primary btn-block" id="sendWhatsappBtn">Send to WhatsApp Now</button>
@@ -1450,53 +1450,30 @@
 
   /* ==========================================================
      Sending the registration image straight into WhatsApp.
-     On phones that support the Web Share API with files
-     (most Android/iOS browsers), this opens WhatsApp directly
-     with the image and message ready to send — no gallery
-     download needed. On devices that don't support this
-     (mainly desktop), the image downloads automatically and
-     WhatsApp opens with the message pre-filled so it can be
-     attached manually.
+     wa.me/<number> always opens WhatsApp with that exact chat
+     ready (Abu Zayd's number, set in CONFIG.adminWhatsappNumber)
+     — so the message never depends on the participant picking
+     a contact from a generic share sheet. The image downloads
+     at the same moment, ready to attach in that chat.
      ========================================================== */
   function buildWhatsappMessage(){
     return "As-salāmu alaykum warāhmatullāhi wabarakātuh. Here is the copy of my form, and shortly I will send proof of payment. Thanks for the opportunity, Abu Zayd.";
   }
 
-  async function sendRegistrationToWhatsapp(){
+  function sendRegistrationToWhatsapp(){
     const dataUrl = generateRegistrationImage(registrationData);
     const message = buildWhatsappMessage();
-    let sharedDirectly = false;
 
-    try {
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      const file = new File([blob], "Beyond-the-Degree-Registration.png", { type: "image/png" });
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          text: message,
-          title: "Beyond the Degree Registration"
-        });
-        sharedDirectly = true;
-      }
-    } catch (err) {
-      // Share was cancelled or unsupported — fall back below.
-      sharedDirectly = false;
-    }
-
-    if (!sharedDirectly) {
-      downloadImage(dataUrl, "Beyond-the-Degree-Registration.png");
-      const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + encodeURIComponent(message);
-      window.open(link, "_blank");
-    }
+    downloadImage(dataUrl, "Beyond-the-Degree-Registration.png");
+    const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + encodeURIComponent(message);
+    window.open(link, "_blank");
   }
 
   document.getElementById("sendWhatsappBtn").addEventListener("click", function(){
-    sendRegistrationToWhatsapp().finally(function(){
-      document.getElementById("waActionRow").style.display = "none";
-      document.getElementById("preWaBlock").style.display = "none";
-      document.getElementById("finalConfirm").style.display = "block";
-    });
+    sendRegistrationToWhatsapp();
+    document.getElementById("waActionRow").style.display = "none";
+    document.getElementById("preWaBlock").style.display = "none";
+    document.getElementById("finalConfirm").style.display = "block";
   });
 
 })();
