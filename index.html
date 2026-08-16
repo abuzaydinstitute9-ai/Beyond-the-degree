@@ -16,11 +16,10 @@
      - All editable programme details (dates, price, payment info,
        WhatsApp numbers, links) live in one place: the CONFIG object
        near the top of the <script> at the bottom of this file.
-     - Workbook PDF: the free gift workbook is embedded directly in
-       this file (see WORKBOOK_PDF_BASE64 near the bottom of the
-       <script>), so the download button works with no separate PDF
-       file needed. To replace it with an updated workbook, base64-
-       encode the new PDF and swap the WORKBOOK_PDF_BASE64 value.
+     - Workbook PDF: the download button currently points to
+       "beyond-the-degree-workbook.pdf". Place the real workbook PDF
+       next to this HTML file with that exact name (or update
+       CONFIG.workbookFile) once it's produced.
      ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,7 +129,8 @@
   /* ---------- Header ---------- */
   header{
     position:sticky;top:0;z-index:50;
-    background:var(--paper);
+    background:rgba(255,254,251,0.92);
+    backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
   .header-inner{
@@ -223,29 +223,26 @@
 
   /* ---------- Why block ---------- */
   .why-band{
-    background:var(--paper);
-    color:var(--ink);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
+    background:var(--green-950);
+    color:#f4f7f2;
   }
-  .why-band h2{color:var(--green-950);}
-  .why-band .section-head p{color:var(--ink-soft);}
+  .why-band h2{color:#fff;}
+  .why-band .section-head p{color:#c9d8cc;}
   .chip-grid{
     display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:34px;
   }
   .chip{
-    border:1px solid var(--green-100);
-    background:var(--green-50);
+    border:1px solid rgba(255,255,255,0.25);
     border-radius:999px;
     padding:8px 16px;
     font-size:.85rem;
-    color:var(--green-800);
+    color:#e5eee2;
   }
   .quote-block{
     text-align:center;
     font-family:'Fraunces',serif;
     font-size:clamp(1.25rem,3.4vw,1.7rem);
-    color:var(--green-700);
+    color:#fff;
     max-width:640px;margin:0 auto;
     font-weight:500;
     font-style:italic;
@@ -351,20 +348,19 @@
   .workbook-grid{display:grid;gap:32px;}
   @media(min-width:860px){.workbook-grid{grid-template-columns:1fr 1fr;align-items:start;}}
   .workbook-cover{
-    background:var(--paper);
-    border:2px solid var(--green-600);
-    border-radius:18px;color:var(--ink);padding:34px 28px;
+    background:linear-gradient(160deg,var(--green-950),var(--green-700));
+    border-radius:18px;color:#fff;padding:34px 28px;
     box-shadow:var(--shadow);
     aspect-ratio:3/4;max-width:340px;margin:0 auto;
     display:flex;flex-direction:column;justify-content:space-between;
   }
-  .workbook-cover .wc-top .eyebrow{color:var(--green-600);}
-  .workbook-cover .wc-top .eyebrow::before{background:var(--green-600);}
-  .workbook-cover h3{color:var(--green-950);font-size:1.5rem;margin-bottom:.3em;}
-  .workbook-cover p{color:var(--ink-soft);font-size:.92rem;}
+  .workbook-cover .wc-top .eyebrow{color:#bfe3cb;}
+  .workbook-cover .wc-top .eyebrow::before{background:#bfe3cb;}
+  .workbook-cover h3{color:#fff;font-size:1.5rem;margin-bottom:.3em;}
+  .workbook-cover p{color:#d5e8da;font-size:.92rem;}
   .workbook-cover .wc-bottom{
     font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;
-    color:var(--green-700);text-transform:uppercase;
+    color:#a9d4b7;text-transform:uppercase;
   }
   .section-list{
     list-style:none;margin:0;padding:0;
@@ -407,16 +403,14 @@
     overflow:hidden;
   }
   .register-top{
-    background:var(--paper);
-    border-bottom:1px solid var(--line);
-    color:var(--ink);padding:26px 28px;
+    background:linear-gradient(155deg,var(--green-700),var(--green-950));
+    color:#fff;padding:26px 28px;
     display:flex;align-items:center;justify-content:space-between;gap:12px;
   }
-  .register-top h3{color:var(--green-950);font-size:1.3rem;margin:0;}
+  .register-top h3{color:#fff;font-size:1.3rem;margin:0;}
   .price-pill{
-    background:var(--green-50);
-    border:1px solid var(--green-100);
-    color:var(--green-800);
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.3);
     padding:6px 14px;border-radius:999px;
     font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.85rem;
     white-space:nowrap;
@@ -533,41 +527,40 @@
 
   /* ---------- Final CTA ---------- */
   .final-cta{
-    background:var(--paper);
-    border-top:1px solid var(--line);
-    color:var(--ink);text-align:center;
+    background:linear-gradient(155deg,var(--green-950),var(--green-700));
+    color:#fff;text-align:center;
   }
-  .final-cta h2{color:var(--green-950);}
+  .final-cta h2{color:#fff;}
   .final-cta .lines{
     font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;
-    color:var(--green-700);max-width:420px;margin:18px auto 26px;
+    color:#e6f0e8;max-width:420px;margin:18px auto 26px;
   }
   .final-cta .lines div{margin-bottom:4px;}
 
   /* ---------- Footer ---------- */
-  footer{background:var(--paper);color:var(--ink-soft);padding:48px 0 26px;border-top:1px solid var(--line);}
+  footer{background:var(--green-950);color:#cfe0d3;padding:48px 0 26px;}
   .footer-top{
     display:grid;gap:28px;margin-bottom:28px;
     grid-template-columns:1fr;
   }
   @media(min-width:760px){.footer-top{grid-template-columns:1.3fr 1fr 1fr;}}
   .footer-brand .logo-mark{margin-bottom:12px;}
-  .footer-brand strong{color:var(--green-950);font-family:'Fraunces',serif;font-size:1.1rem;display:block;}
-  .footer-brand span{font-size:.8rem;color:var(--green-600);display:block;margin-top:2px;}
-  .footer-brand p{font-size:.85rem;color:var(--ink-soft);margin-top:12px;max-width:280px;}
+  .footer-brand strong{color:#fff;font-family:'Fraunces',serif;font-size:1.1rem;display:block;}
+  .footer-brand span{font-size:.8rem;color:#9dc0a5;display:block;margin-top:2px;}
+  .footer-brand p{font-size:.85rem;color:#a9c6ae;margin-top:12px;max-width:280px;}
   footer h4{
-    color:var(--green-950);font-family:'JetBrains Mono',monospace;font-size:.72rem;
+    color:#fff;font-family:'JetBrains Mono',monospace;font-size:.72rem;
     text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;
   }
   footer ul{list-style:none;margin:0;padding:0;}
   footer li{margin-bottom:9px;font-size:.88rem;}
-  footer a{color:var(--ink-soft);text-decoration:none;}
-  footer a:hover{color:var(--green-700);text-decoration:underline;}
+  footer a{color:#cfe0d3;text-decoration:none;}
+  footer a:hover{color:#fff;text-decoration:underline;}
   .footer-bottom{
-    border-top:1px solid var(--line);
+    border-top:1px solid rgba(255,255,255,0.12);
     padding-top:20px;
     display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;
-    font-size:.78rem;color:var(--ink-soft);
+    font-size:.78rem;color:#8fb197;
   }
 
   .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
@@ -608,7 +601,7 @@
     <div class="hero-strip">
       <span>5 Days</span><span class="divider">|</span>
       <span>Live on Google Meet</span><span class="divider">|</span>
-      <span id="heroPrice">3,000₦</span>
+      <span id="heroPrice">₦3,000</span>
     </div>
     <div class="hero-actions">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -898,7 +891,7 @@
     <div class="register-shell">
       <div class="register-top">
         <h3>Registration</h3>
-        <span class="price-pill" id="regPrice">3,000₦</span>
+        <span class="price-pill" id="regPrice">₦3,000</span>
       </div>
 
       <div class="register-steps">
@@ -981,7 +974,7 @@
           <h4 style="font-family:'Fraunces',serif;color:var(--green-950);margin-bottom:8px;">Complete Your Payment</h4>
           <p style="color:var(--ink-soft);margin-bottom:18px;">Pay the registration fee below, then confirm your payment to continue.</p>
           <div class="payment-card">
-            <div class="payment-row"><span class="k">Registration fee</span><span class="v" id="payAmount">3,000₦</span></div>
+            <div class="payment-row"><span class="k">Registration fee</span><span class="v" id="payAmount">₦3,000</span></div>
             <div class="payment-row"><span class="k">Account Name</span><span class="v" id="payAcctName">—</span></div>
             <div class="payment-row"><span class="k">Bank Name</span><span class="v" id="payBankName">—</span></div>
             <div class="payment-row"><span class="k">Account Number</span><span class="v" id="payAcctNumber">—</span></div>
@@ -999,25 +992,25 @@
           <div class="confirm-box">
             <div class="confirm-icon">✓</div>
             <h4>Registration Details Submitted</h4>
-            <p>Your registration details have been recorded on this device. As our gift to you, a BD participant, you can now download the Beyond the Degree Workbook.</p>
+            <p>Your registration details have been recorded on this device. As a gift, you can now download your free Beyond the Degree Workbook.</p>
           </div>
-          <div class="note-box">This workbook is a free gift for BD participants — it is not your certificate. The Certificate of Participation is issued only after the programme, to eligible participants.</div>
+          <div class="note-box">This download is a participant gift — it is not your certificate. The Certificate of Participation is issued only after the programme, to eligible participants.</div>
           <div class="step-actions">
-            <a class="btn btn-primary btn-block" id="downloadWorkbookBtn" href="#" download="Beyond-the-Degree-Workbook.pdf">Download Your Gift — BD Workbook</a>
+            <a class="btn btn-primary btn-block" id="downloadWorkbookBtn" href="beyond-the-degree-workbook.pdf" download>Download Workbook PDF</a>
           </div>
           <div class="step-actions">
-            <button type="button" class="btn btn-outline btn-block" id="toWhatsappStepBtn">Continue to Complete Registration</button>
+            <button type="button" class="btn btn-outline btn-block" id="toWhatsappStepBtn">Send Registration to WhatsApp</button>
           </div>
         </div>
 
         <!-- STEP 4: WHATSAPP SEND + CONFIRMATION -->
         <div class="step-panel" data-step="4">
           <div class="confirm-box" id="preWaBlock">
-            <h4 style="text-align:left;">Complete Your Registration</h4>
-            <p style="text-align:left;">Tap the button below. Your registration image will download automatically, and WhatsApp will open directly on Abu Zayd's chat — not a picker of apps or contacts. Just tap the attach icon there, select the image (it'll be the newest one in your gallery or downloads), and send.</p>
+            <h4 style="text-align:left;">Opening WhatsApp…</h4>
+            <p style="text-align:left;">Your registration message is ready and WhatsApp should open automatically in a new tab. Attach your payment receipt manually, then tap Send inside WhatsApp. If it didn't open, use the button below.</p>
           </div>
           <div class="step-actions" id="waActionRow">
-            <button type="button" class="btn btn-primary btn-block" id="sendWhatsappBtn">Send to WhatsApp Now</button>
+            <a class="btn btn-primary btn-block" id="sendWhatsappBtn" href="#" target="_blank" rel="noopener">Open WhatsApp Manually</a>
           </div>
 
           <div id="finalConfirm" style="display:none;">
@@ -1064,7 +1057,7 @@
     <div id="faqList">
       <div class="faq-item">
         <button class="faq-q">How much is the programme? <span class="plus">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner"><span id="faqPrice">3,000₦</span>.</div></div>
+        <div class="faq-a"><div class="faq-a-inner"><span id="faqPrice">₦3,000</span>.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Where will the classes take place? <span class="plus">+</span></button>
@@ -1110,8 +1103,8 @@
       <div>Learn to create value.</div>
       <div>Prepare for life after graduation.</div>
     </div>
-    <p style="color:var(--ink-soft);max-width:420px;margin:0 auto 26px;">Do not wait until campus teaches you everything the hard way.</p>
-    <a href="#register" class="btn btn-primary" id="finalCtaBtn">Register for 3,000₦</a>
+    <p style="color:#d9e8db;max-width:420px;margin:0 auto 26px;">Do not wait until campus teaches you everything the hard way.</p>
+    <a href="#register" class="btn btn-light" id="finalCtaBtn">Register for ₦3,000</a>
   </div>
 </section>
 
@@ -1155,27 +1148,19 @@
   "use strict";
 
   /* ==========================================================
-     WORKBOOK GIFT — the free Beyond the Degree Workbook PDF,
-     embedded directly as base64 so the download works with no
-     separate file needed. To update the workbook, replace this
-     string with the base64 of the new PDF.
-     ========================================================== */
-  const WORKBOOK_PDF_BASE64 = "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIgL0Y0IDUgMCBSCj4+CmVuZG9iagoyIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMSAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjMgMCBvYmoKPDwKL0Jhc2VGb250IC9UaW1lcy1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EtQm9sZCAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjMgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iago1IDAgb2JqCjw8Ci9CYXNlRm9udCAvVGltZXMtSXRhbGljIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GNCAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL0NvbnRlbnRzIDE4IDAgUiAvTWVkaWFCb3ggWyAwIDAgNTk1LjI3NTYgODQxLjg4OTggXSAvUGFyZW50IDE3IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago3IDAgb2JqCjw8Ci9Db250ZW50cyAxOSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCAxNyAwIFIgL1Jlc291cmNlcyA8PAovRm9udCAxIDAgUiAvUHJvY1NldCBbIC9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUkgXQo+PiAvUm90YXRlIDAgL1RyYW5zIDw8Cgo+PiAKICAvVHlwZSAvUGFnZQo+PgplbmRvYmoKOCAwIG9iago8PAovQ29udGVudHMgMjAgMCBSIC9NZWRpYUJveCBbIDAgMCA1OTUuMjc1NiA4NDEuODg5OCBdIC9QYXJlbnQgMTcgMCBSIC9SZXNvdXJjZXMgPDwKL0ZvbnQgMSAwIFIgL1Byb2NTZXQgWyAvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJIF0KPj4gL1JvdGF0ZSAwIC9UcmFucyA8PAoKPj4gCiAgL1R5cGUgL1BhZ2UKPj4KZW5kb2JqCjkgMCBvYmoKPDwKL0NvbnRlbnRzIDIxIDAgUiAvTWVkaWFCb3ggWyAwIDAgNTk1LjI3NTYgODQxLjg4OTggXSAvUGFyZW50IDE3IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iagoxMCAwIG9iago8PAovQ29udGVudHMgMjIgMCBSIC9NZWRpYUJveCBbIDAgMCA1OTUuMjc1NiA4NDEuODg5OCBdIC9QYXJlbnQgMTcgMCBSIC9SZXNvdXJjZXMgPDwKL0ZvbnQgMSAwIFIgL1Byb2NTZXQgWyAvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJIF0KPj4gL1JvdGF0ZSAwIC9UcmFucyA8PAoKPj4gCiAgL1R5cGUgL1BhZ2UKPj4KZW5kb2JqCjExIDAgb2JqCjw8Ci9Db250ZW50cyAyMyAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCAxNyAwIFIgL1Jlc291cmNlcyA8PAovRm9udCAxIDAgUiAvUHJvY1NldCBbIC9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUkgXQo+PiAvUm90YXRlIDAgL1RyYW5zIDw8Cgo+PiAKICAvVHlwZSAvUGFnZQo+PgplbmRvYmoKMTIgMCBvYmoKPDwKL0NvbnRlbnRzIDI0IDAgUiAvTWVkaWFCb3ggWyAwIDAgNTk1LjI3NTYgODQxLjg4OTggXSAvUGFyZW50IDE3IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iagoxMyAwIG9iago8PAovQ29udGVudHMgMjUgMCBSIC9NZWRpYUJveCBbIDAgMCA1OTUuMjc1NiA4NDEuODg5OCBdIC9QYXJlbnQgMTcgMCBSIC9SZXNvdXJjZXMgPDwKL0ZvbnQgMSAwIFIgL1Byb2NTZXQgWyAvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJIF0KPj4gL1JvdGF0ZSAwIC9UcmFucyA8PAoKPj4gCiAgL1R5cGUgL1BhZ2UKPj4KZW5kb2JqCjE0IDAgb2JqCjw8Ci9Db250ZW50cyAyNiAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCAxNyAwIFIgL1Jlc291cmNlcyA8PAovRm9udCAxIDAgUiAvUHJvY1NldCBbIC9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUkgXQo+PiAvUm90YXRlIDAgL1RyYW5zIDw8Cgo+PiAKICAvVHlwZSAvUGFnZQo+PgplbmRvYmoKMTUgMCBvYmoKPDwKL1BhZ2VNb2RlIC9Vc2VOb25lIC9QYWdlcyAxNyAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjE2IDAgb2JqCjw8Ci9BdXRob3IgKEFidSBaYXlkIFN1bGVpbWFuIEFkYW0gR2JhbGUpIC9DcmVhdGlvbkRhdGUgKEQ6MjAyNjA4MTUxOTA4MDArMDAnMDAnKSAvQ3JlYXRvciAoYW5vbnltb3VzKSAvS2V5d29yZHMgKCkgL01vZERhdGUgKEQ6MjAyNjA4MTUxOTA4MDArMDAnMDAnKSAvUHJvZHVjZXIgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIFwob3BlbnNvdXJjZVwpKSAKICAvU3ViamVjdCAoQSBnaWZ0IGZvciBCZXlvbmQgdGhlIERlZ3JlZSBwYXJ0aWNpcGFudHMpIC9UaXRsZSAoQmV5b25kIHRoZSBEZWdyZWUgXDIwNCBXb3JrYm9vaykgL1RyYXBwZWQgL0ZhbHNlCj4+CmVuZG9iagoxNyAwIG9iago8PAovQ291bnQgOSAvS2lkcyBbIDYgMCBSIDcgMCBSIDggMCBSIDkgMCBSIDEwIDAgUiAxMSAwIFIgMTIgMCBSIDEzIDAgUiAxNCAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjE4IDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDEwNzAKPj4Kc3RyZWFtCkdhdCUhPyNTRmgmOk87VlIpY1dHZ1JbL2tySE51XiY1bmBcaSRfNEooQlJAcz42QHFAbVQnNzdhKEUjLjlOMGF0JjtcNkxmcE9XUGBzQGk4ZlIwajIhOTUlXz9RbChvciMqaWUiOE9mSm84RmlBKkY/JFdGLUhfNGppRSQ0LihnJzMlTCJ0RWIoTDkwZD1WXlpBPm05PTtdOGNeUixNQl48akkvZltHZUQhP1k3LygsVEIiMTIsNzxka2JTY2hNPDdMI0dbSjNXTE5DLSJlO29xXkBjMDRfVj1PbkU7T1VRdWRhIipPSyRcZUkrbDljU1snW1xJKzAuL1Y4Z2srdEAyYzhQXGlGPlVRNiYtK0VXNDhTUjxAKGg4ZFshbD0ySUtGTEJcQyc7XiZIVTNAJi5ramRORTIwZUZZUmxuSVEhSkEkYFYqMS82YkQ2P2xvVjI+bjRXcW9Wc0ZuUnVZKmlEa0tBamxgYEAqUyJXI20qXTtKYC9nSmNCZSQlJjhDUXUxZFcqbWIuJGtLNFNdOVk/XV1icFZhIk8mI1J1Yi01Kj8xPmMsQl1ia0RfcktXNDFSVkdeODplIjxsJ1RAXHUkXyNcTlwvKjNPL3EwVjYpOUJUXldVYmpTIltxNkc1NUhQYzwlJVgjczRpblgkXzFyKFJeXkUkdSxLV11ndWM+JkNCWD9JVDJlJD8tRFYyPWs7Oi1xI2BJJ1ZVRGkuNWRzQmltInAxM0k1P1lNTzloXSYuQV9wcTpwUUNFJXNbI1pwYmpYUjJgL2BRT3InaSpoLTFuWy4zUmtZKE5GQVEzO1ZQV09wPCkrcyNFK2RVOC5DYigrKygvbkZWWl82dWdUJ18sMl9vZG1gZD46K2QiMCI2WF1mVz1IYSlca25AITQiWSJXWzdqNSphWnFncUNNZ3BFRCQxYytqPClXRk5NJCpXRnBxLz1vV1BoIWBDOE1TbWQycF41WDdGJ2hMXlpsZykmKU5UZWI8UGw6NkI1OnFhVklqPVxaNStNZCh1IygwUm9gKCVSJCJDM2BTSFsxb0ZQWmlbQ2FBVypwLmFJU0UzbUdtKFRsblBfOEcrLTA9RVVbOiZMQCZHbnU3MEZaVnJVcyYnOlgqUmxQOzkuTm9JQXA7VFE9cEE6Oj0wP1M4dDVAUltELUZaalpbRCckMiNXVjE3ZDglSHJKU3M5VyMvOEZQP1tzazQ+KF9UYi9IJFFpVyhUQmBEcEs9VTwuRCxLXSo1TEk2PkwoLT9iZSpUIlZpbExRS11zMS8oWipdaTpCQzJyTi1HV05bbWVhIUYqVmxEL1NXdVstV1giRFBlPGBPLUJSQklec05PQ1VRbG9VXCNGPCktTDlgNXFrRHBAW2VGPjk/JXBecCFVSGhdWEpTQT1eaHFFQ1AvaFhpQjhaPG9FOWJVTn4+ZW5kc3RyZWFtCmVuZG9iagoxOSAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAxNjgxCj4+CnN0cmVhbQpHYXRuJjlvbiRlJjtLWk0nbmAlMStDUCFzbyU3ZmZcWUxYOFxkL0IwVTwnXkRYdDFIUl1GNGM6JU9tTzdtQmZGMl5xX1FfJnIvLHFvOGsxJCdScVwzWGNFR20pdS9aISMpcEgzIz4+YTpTK2xFXi5GPGFfQDorLTg8RmxwKFY6JmBzLEs8Z2ZLN2kiR0psIysuZU5lZWJWMysjJihRLXMkWVleUkspVG0oPEVAZUk+PmNyZ2lkJGlUYj5IdW1TTUpZcDlqJUosPC9eW2xAXjFTPGw0SCdcMzhXOzRIWEJvXidIV19cUWgpXC9iTDozMGlUajVyYls3Um9UJS4uVy9dKCFEM1VSY2FpX1VWPC9KJFw6SzMjITQsJ1s3MiwlWkQjXjdwSFRwQSdGSGQ+SUklKiwrNT1sYVxdaSdISjBAdExQTj8nX1dHZGhdXzY3V2BeSW9gJjticlMkcSJxaURAcThAPSlgRSNJSWZlJT1eaG8xWUl0X05SJEBxMklgSFk9JjJmQilJcmRgcU5zW2M0TyZXR01ZTzFCMXFkNGdQbTRmOWFYSGNeSyFLVy1hJ1JiaU8jWktHaiFMUTA5MGx1QzJDTTAoMCNJaiJSaiQqLUtHXTxQV106Rl1QKCRNazc6LmNTaiRIX008O1leazpOaT5YYzBVNFFMPDo/aWFDVXVaLmdMRSUiOiNFY1syKyQzLihSUFtCNTVYVUMkTnJBQ0FxWk0iR2wkNGk6T3FoKklpX3VbPE9JSVlhMSVRK2ttYDZNQ0wnKGhlU1g5cDxaVitXSCY2RzpLIShIJi8oL1RAPCouLGhIJWBXWlRqTG1PIzhhNj1wWyFXbVQ0SysvKk5FUCs9dF4kWCokJGpxQSh1NSlaLlpfWEdoNSY+JSxSZ04qUFZSKW0wRGZeRkNDOlZhXSRBVDkwIitwPlkwa1JrSDEySGsrSVpoNm45X0tGITk0P1skPSUrJ1ZcL0ooMS9QSmU+OkE/Mk0lJC1SXSNhI1pZOlUjYTEzI0xSUCtcNiRCaDdaKUgvO15ZMCZNSF84ZU0yJGdqX2pIViUnVzRYbENkZWpYLmk9PUQ1Ll9rYjpzLjRuMidRUzpjMUVaWDU7J2QxaWUsa081ZVBnbkQvPFoyKSwvVzJsKTI3O2E6O14uPGttKCdGZmtnN21wamg/TD9bR1xjXWBlaG9YZFtcUSRUO3VlOGI1TD5iUTMuNExQNykiWVNKXGAwYic6X2tUVEZEPTBeWHBbKXBnOXIpRm5GNl9rSFBTMzhNSmdhYT8tKU9xLE85QGJJWkZlXy1XUTFtPFFZNlQnLU9WcjxST29SaHFeJTxWUCo1OGo/PltpTS8mU2QqTlhaaGtMUFxAUDBSZytqQTpCaGB0S2BaI1ZGXDNpUHJFSkZUJlw0L2NcXS1mJTBZOTByZl1sLWdiOCE/YT1rVic7M05lLmcmJDtrZWBPcXM+JWlAQGMlbCFhdV9dSlpsaW4+aE50UyhcX2VhYkMrbzdmLkIkKWM2IzlcamYhKS8nSWdUbDQvT0BcXVJDQmghXUdSNXEwUDFsKSZjSW9CZTdpOCwlRlcmMTNuMGk6JUxOJ1k1Pz9vNjtESV8raipkb0BIdEdWZVlbL0VMampIX0A9c1NMUjFJMCU3IjxVZ108T1IuaEtnZWRUVSpQPzM7P0RGVW5VVHBIW1kjPlFfZ1wvSihWOjVWUjBfNm89Xi1POGFOcldYT11aVzFBOyUpTWlONT1XRy1nI1JrR1BLWENYXSNcaG1INExIc2ZPcSNsKE49S2ZvIT9tSDkhQ0U1cW9rVl0zK1AsXiopbSsucWhbJ1NRTXNtJTMrNUNvbkBMOk5QLU1ONCdtc2pnTDltLVxnbyNPaGVwdTJMaipyOV9ySkkyRldAJT02Km5xR1ZuRG45WXMvMU4zRVx1R3BlQSkjS0hcV25LMF5TOl9mby1kUFZuLldfYVZuYHVVWjxkXT9rNzZzVCFNYVViTWxUXDRHaipLQDJKPipNVnBmS2pVLSJDb1RBOWVjZ2Y4S1Y3OjgmU0QyWkJsQGxHUmUwP25UaEQpNVIyTVVgZW9QblMlU1Q8UlpATWZ0aXNuYj9DQCgmJTMsK1hETTcsUWI2OzR0LzIsRiE1RS1xcG1lSlJAPVM6Z0VKTT5iVEM+a05FdUhPSzpjVDBtJiJgcTVKNHRRJFRHLyk6L3M2ND9dTCYtR2lKOjopVG9EXFRfSmIoZTdPTH4+ZW5kc3RyZWFtCmVuZG9iagoyMCAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAxMzE0Cj4+CnN0cmVhbQpHYXUxLWdNWWI4JjtLWkwnUVs5XVxfLT9HRSlrRHEpXGQ2KVRPbyxHa1JCK0AmbzEmcS1vdXE5Xjldckc7SWo3VFchYFYxcFwvXU8lZl0kcyE2Ol9xcmlRXzI9I3AzUldyTzpkaGdqJ0k2W2ZEJUglbHQyUlZkNjdbW0xUa0ZOL3BhSnBBRyMxYVF0cEE7Z2FHSmQmIyZHP3RCODtBZ0BgKWAsQyJlRFFrX21sNGlZMFA/VFJjUl9RSTYrYHBxJidmNi40XWhUaUFqVzYrYjJOYzdZZSVTKlhvXVhkLFojMyRMWko7YUJYbyRaK15xIVdiP1dzcCx1Klw+WitEKCY+JU1cMmstPUFWNlxaOy9udDRJRmInIloyTTdWQko+Q3RkbHFsXHJsJiUiXk1uWGo4LU83ayxYY2xIXGJZbyJvU18iVXBeNT0jMllqRFgkcS1BNkVmITdSPSonJWhNS0VDQjw6Z0ojSXNTNk5ZXGZWLyVJQVFuS1tZMFI2b050XkUwJC9JY11cNS5VdTBGa21zNSRsSiNtY0tsNlwrZkBMck9cT2pQJTIxMll1N2cyPDVwWXVFa21ANWhDPztuQlMhY0pjXE48LFFkNUEuNTtocTNGZk9eT0hqPVRVQFhqaClgKD5uJyE7aVQ1N28nSTMmSW9IbiwkOFQ6KSIhLEo6Ujg3NWJXQltHP3BDJTQpXWEvRitQcl5LVFQqIUlSdU5ecyc7WSJtRiVkS2ctIyhBVEVMMTAkQktLKE0sXyhpQ29vYGMxJTxKbFwuKEJfPUIuNCFePFxbMExUaidcPztHVjJIKDYlZHA5MWY0ZFBZZ09gOHBIO1dDNz1jPDNySkVWazxRPmMpJyZZW15Ea0RETSk4cCFWTHM8Si9DREYnRkowRzBHbkpjVDZOO0xoNUVGP21aOGtxUEgjVjZmWWxfSyohdUhcU2dRYElnMUU5bVpNJDxMXUFSY24nVXNoTm9NQUA4NWl1NzFsU0QnbGBIIzAxaWpXYysmMkk+IVNZK09XbkpUPXU0STBvWFxCUWtjMGVZMkAvWztDZm87cGdtcTlmcW9HVUdDRj00ZjRudTtuXlM8RWVAKFUvXDhYUS0xI1soVzIzZGkwNmBCb201Ikh1U0Y3WmgpdTNBYS9HTEUrX0E/b1NNPVBFJFFoI1VBUVAiXF9RXV5RcjAvR2U2JyZxPjZwbkNkSk1rZ1goJjIuPnM1Ti5NNWdAbSs/YV1HS1ZkWUNvYWJPRVc7UGZxXD5sUVMxVkZnbkVAKEBuYWsvMDw3PipBOEdPJSdMTzlgRy9KPlQxWiZCOy9UYz8yNV81OEFeUy4pK2A3MXBkJWxma1s5OClOPjIjZz1UVFBPYGFYKFZySTNWKVIoMGh0TWcmclNJI1IidT4kbUAobSFbMi5JIVsyLWwsc29iUykrKC1AI2drK0Y2cklRKkx0PnF0I3Nza1FMQ2Jhb2BeaHNdcVhBNSouNltMYmlUYDk0XGQ0OSRoOkJYNnMkYCQ8SVQoWk9UTyEtRCRsSCwsJFlhaGppTEJENyNWIUs4LV1nZytRW1Q1WkJrYG88SmpycXRBWDkhT3Asa1okcD5JTiFsJCw7Iz5HazgvUzVzYVAicCxKLy0mcUI7Z09JNTBrOE0pOGlgbERuZ2JyXk1JblQlYTZlc2xbZkNdNyhkUTJvTkA5W1NQZltMQDg/LEwxIlsrMjEmYCJDOEw1YStYYl1NLUBOKF9qOSohUyYlakY4fj5lbmRzdHJlYW0KZW5kb2JqCjIxIDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDEzNDEKPj4Kc3RyZWFtCkdhdTEtOTVpVEQmQkY4OSdRWWJYXmdRdGVTLWxsJ2RmTio+ZS1sJjdNXXVyZ2dMcW0jPGFiXldHR3JRRF01ITlBZk89a0tyLUxEbmYyJitATl4jOHRYVVk+NCl1MDRmIUNGWTgkVVFXWVMrbERxO2tTZllJVE5uT1c8bjtOQi5TOVpSLm5FYT9jMlMzXzBGbF49Q0I5bGs7PXFCUScjTTE9O10+WiMzWGRLaiVyam9TNHU9Sz1TMGFnRyJLIl1TRUorQlksNWpWS0xFTCdpWDJIYkhKMDY8IUtSYShhR101JkU3NytbWFFFPk1CRjhVRSRmJVxWQnE3QUhjZ3Q6PiZRX1VGYypXb2EsVktsMzheOj1VP1hUOyNSVWBsUyNnVHElLmteP1c0NGJKUC5IXj47Y1Ulb3Q7MixzSFNpLWlLbmBvcnVmX2JpQDJwbicjVHEhc1QxXjlpXFFKUGheJmNEVTFPUlJwT01uPXQ+Q0NhSUM8PEcwWSxhYSZJcGladS1yQ2AwS248WERqIixyXUhgUm8oYnJqcXBjai5FUWRyS21jIWo/Ilw9Il49bDkqJ0dlVzlHbSl0IWokdGhCUVxcbGJXcmFdYGNZUnIoTjxOQkdQLEJPNGkuX0s+O3NnaUhKZS9dX0RtQlkiKDlybGojRU0wPkQ1ZWpfP2NIIixGNVVRaktpRiElSio9NjlcZHQzbT5WVSdFWSxccmZQbVY5MT1caztNJS5sT2UvWFlWOTFrWC1AXjByKSNdMkI6OD1KIXJaWC9mdVVnXTU1IScuTXNTbTtcU1BVWmwvLyJCZWhcQ0IxSS9BXj1hSSYlPG03MC9DczonISIzO0dMQDhpaFlKRW9LR2dARHMjMUFPMUAxZFRiRkVjPmlebG1FRzQ+ZyRTZjRuZl1KSDdHTi9KOjFXNFFqRz9ybGFTclRtOzBgMj82VHFOS0pNK0pTRjo3L3NucTw/LEMlI2RjdXI4J1RRZSVUUFNcYmNeRUk1ZlsrIStnS15dLHEhKUBMbEpqW10mVysoNTw7T1MjM2gnSScxVzBfcTJxOW5jRjJbL3QhW0EzWmJGTDtxInRqamxXT0Vab0hqKVEqPiYpNzgkW09ZSDhTIlg6MmZeOlRbMWI6N1JPVi8iQi9SRSRDOjc6Z1ReTlVxQyduQTsiPUtBPkQ5K2FYbG5MNydxJVI6OipWUU9WQmdEclBfOmMxUm9rZEFtMjBEUzVOKmIqUjlEJ2lSblUnYkIpWmJqO04jQT9IaUVPO0VBQExoVk9UVGN1UmUhSjJFUGkqTChkcE0zKGBuaU5PQy5yJFdbXyhGKl9paDokLiJkYWtWIVJQXkldRDpaKFZRRThUKTJVW2JSPmdsMHJHQi9ARF4oai82QUs2aCUxZ29FQDMwSTFDMylXNUwzKVYoQ0YvNWx1aUo8X1wsP2NDUjg7X3JBcmwuSSFFQzloZSopWE0wTy1FUkRMVTF1ckZFWj9ybEM4aDdcT01UQ2VFcCdqbCMkVFEyLl8sOFM1YXM8M3IyMCM/MiJORm04M1ErXCo6LDhtazQrOHMjPkc2JVY4bDRDMUlnPj0rP1lRP1tqSXAsN0xBVEsxQitORWJrLzg5MyxYNipiZDhQS2p1Z28nVT1eNUMiZF5ANSVGP0hadHBtPiteYF1NRUw8WFNJSnFyMD8mLzpxRF4ybS5ZMlBTLyVXOG9YYk5JTGI+WnFBTyQrcC5aSjhOb1VlTVRJUnJOTkwhJXFSaG1dT24uYDg9bDE0KHA1WVYuL2pEJ0JGKTN+PmVuZHN0cmVhbQplbmRvYmoKMjIgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMTMzNQo+PgpzdHJlYW0KR2F0bTo5b24kZSZBQEMyYmMsOHNALzNPXjwtMT9uIyJZMSxDR19BXydYLC9tPTEvbU1HRCNrZypLbmo0W1tLVyMwRlRNTlwmNzBvUkouczZpOm11VW1yQWVUWiUtM10mME41TDxaajZKWV1wXTFNW0NYKiU8cD5UTDc2Z01sJjVlTCJuVEolMFhTJzE7X19VIjstUkdORXAjOzYuQCQkPGdmUEg+VV4kIWVnOUljXUAqV0FXWCI3bEVbPDxGbypoO0U7SEVQXSZBalJdVVhNUDxJPUlqVmk8SzUmTiZoJlwkLElxbi0vWElbcyFrTSEuayVcZDVgakYjL2o3QE5IWjNtWGg4IWQ3JDZjcWFuOk1PMzpsTylCN2gyTGBlKz84Q0ZHJE8kWEczaDZnO2lLYmFUJS5zKE8jInBdYmQ/JD5jUEtadF51QV4nXUV1dFojaiVpX1ZOSUFdZlFxSVU3LkJHWC0vZmZnL2FQQj1sb2VJPTx1cCdBLTxQX2FwaEQjRnJoW1BpcmtwSyFebzNKTkU0YFpwPmVLdC8oRyxSYEZGQEhBUzE5UVw5IzdCNik5Ok9UIT5FSiFXclckaSJcJ04pJm8qTjIzOT5WPEZhTmxpcmI4c2EoK3RCTjNHZU90ZmJQcWlAaCUnSm01UVJvaTFQJWJmRzs7REEmS1diL0E1Lz9jN25eb182WCJmRC9YT0A7aEQ2ZV9KcE5zLTs+RjJQOzxMMSY5Q01gQ2FgYDNMYWdLTz4laCtfN1pwQGtiXilqazE1NmROIUQ3N3E7N1QpR09DXVArLyhDWTU+aj5jK1tVQDVvKyxMJyVMZXVTXiZZPSUoUllqOTNTX3EqUDJUV2BvVVtKLlBvYGM5cE9mLUdtM1M1LE8nPTk7WTlXYDlYWmRlQ2dvblIxOT4oV2dLV1U5UDtEN19tRmdWMnFHVnFNbUwmTzFUW09FdERGVGdIWE8sRWw0ZjU4QSliYS1fODprT2lHdEwqb3I8bzxpQEJUPHMiI19mUGhgaFxtYlpraSJHaUpcdWY/TFpjKWBJT2ZkNz8ibCYxViZiUnFQLFReRFVZSThWI24tVCk7OFVWUi03aFosNSopLWRNREZzSTRIMVFPIzlCWEc0YF88R0txZW51P1JXKlEqMlU8PzNRX1VsRi1NZ1BmTVE3LGVSVlRPPSNjKDxmaGhrVVgsUWtrVVtXdTRMZXNGPWxJXHRFVlA0VDZGLVBZJnFpZjNFM3BKLWRoYTxJKWhYOT5DPlcrW1JsKzxrZVhCcz5fLikiK01pKmVbUCk+X0QwRD1sNV1KKmJUXkxaWzduOUMyaEhmQGljIjU4LG5fLF5qT2xBZzhpc1dPXltmYj5FOnQyU3NwaTdlbEE/Zm5jbEw3WUhtQVlqM1lwUCNCVkJVbDpudTg9Qj4sN2BxX0UpXEVeIjcmdCxLSnE/NSxJLjomTTJCa0s4N1JWTERPX1pIQ0UmSlhhPyFNUV8zaUBzdDtORWMsQT4wVjVZISRVcGtPanJlMDMlMiplPz1JNkw/WG5kNEc3QGJEPVwxYDdfcW5sQlg6cTpnSy9fbm5iRUVBMFtkYC5GMm5sWVVZT1hFS11PVTxHOHQkRUhPOGsiPzRyTTVnSV5OZ2hqXFYlNXBlK1xSPzRVZElvTEYhYkk+ZVxeOVM3Nyg5XGopNmVmSG8uMzNnKExcbjknSWgwJnIlY0RRQGdUMW1obDNGaS9KcW1xdENtTE9xXUlUTi07ZVdtWTNBOXRZZ189YSlyPEthaSMxKn4+ZW5kc3RyZWFtCmVuZG9iagoyMyAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAxMzY1Cj4+CnN0cmVhbQpHYXRtOmdNWWI4JjpOX0NiWXVtbl8wNTpaSG4rLDo6JzhGKyY/RzpuP1lHPVtmTUpBMDspJXFCU2BPRksmbFUiWiI7cUYsRS0/Q1drQVhLJmEuTVNxa0JoYFsoJldNKjVZLCFvNVxSJCdvYTBLWSZxb2MrRE5oWVUyNXQkNCklMGFZaydjTmcvUlwvc0A2RVdxW0Q4JGdjPi1mYy5PM0RrQDpEM1spT3RsZE1MQXE7RiNGKSJAUEs/Lls+VUZGaSZrWidGIz8ncS03JVNyJmhNOERsPSI4LjtWWEkkNVonV2NQOGNEKDFFVE89VEx1UyYwJyxQazlePFAjSWllQCxQQC4rMTwuZCY/ODVVZjhaXlVKclFYSDtdUnNobXAjZ1RzSzQiYk0/NDgnWSRNSyhjNFpTWURSWFVJISQsSF5cL2xkYlpIWWtmLzpEaDluXTY5L2IxQmhWOC5DcVs7Oyw1Q2pUT21uJEYkYGY3LUhPai5IWCtJciwnLmNAQUhvISlAbCh1MF9xR1csVyEoSUZmNj5oIzlzJzEhTW5lbD5acjtDSnVqXSQyK1hWPlRPUSNSNTcqJihnJltnSz5LPitqTDMtRDpTLGlbMi0vPnMtIlhuP2xwTlgoJ29vLVNcRilmSVE+S25rbj1pRTAvXVxfLiNMRTZxJllPQXFrYWduJEtvP3JDQ1U/Rk5UQD1APG1HbDJIaWdLMkhnVDorS1JvUjBrbWtPS0djIV0wPzZ0YW0wa180XDJlIUs5OFhIPWJnQD8laSYyVk84Z3Q9N0xFc3UuVkwkN1lTaDdibzlfJXNMOGNeTTlXK1MoOTROMys2YzImIihJSjsvSytPXSkpRCNYT2YlOytmbComOD8lXzduIVNeZ0o+XmNqSWgrI2pvbyhoYGVxUD1fRGtgQWVmXSxaS2NDKDxJcCVzVUVVLC9bNGBxLUFpTjdoJyRLRCI+UmI2XSdETUAoSCVML0BjY20mblpGWVtrSlVMUjNnQitbLCVHTVkqajE/J2JJNnRtUjFBbGJsRz9icixwVydvTXMzIip1SD1ocidRIjRXO1tTXnInYEluREAlcG0rKl1kPjpWRVBEKDYwXy4hbzc2TDtnbG1EdDU+ZTFJXEA1QzFdN14+aXNTSSVvNl5DWlZBSU5eKmFlWiM0Y29SVmpmUT5TI3RaRCp1dCQ7KTJyS2goKjdKdGRwdV8sQDFfTURgWlRFJXNXcjU1VCk4R3RDO21LTzQmJ25SRHRMaUgla3RpRWIxWE9sKlhlNz9zXnVSPlVIVyUzMFE5WiEtbmVIOHE1Y1BaUSwnQl5vOChBUjQhPUxMJ18jSj5dXi1eJFlMZFshUjgoVlI2IihMKGQkO2N0OTc+X1AzQiMuWl5ndC0ndWIhbG1GWkVrTVNbKktadT5CKGIjUTZKIzRZRG9nMlUia181bXU4UF80P1g/K2ZFK2hhYm9NT0dfO0xoMk9zNU8rWjYuJXNzR1BqZkEzZWhsXjFgQUZGYG0oMSpiLHJLZlgpQHJnTjc9L11fNEpUJzJSJ08uTy9wZ0VvcTUqQSpRWl9kXylrZ3JGJDZJcyEvK1JSO1U5OUVLSUxCR2wrM3EjYFA5MT09PEtsRmNvN0FZb0pGbExaJkppKDg7S0lMWzA9MC5KQDUiWWYpKSxBN1BuKHVva1c3UmtFSCRJVyliP0JZWU5eUF9qNUUxLzQ/KHA9JVI2XT5gTzc/KnBkW3BdcEooUGBUa1Y0Q1JhcU1QSzVKMGBZakYjST8sTDEnRyVGdURpZ28oZidKczIzU1g0PThESitFW3IhKklLI1BBfj5lbmRzdHJlYW0KZW5kb2JqCjI0IDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDEzNzAKPj4Kc3RyZWFtCkdhdG06OWxKY1UmQUBbOmJjLDkuQF86TzA0O0RqUSM2RVU8THQpXDFIPTo+VkFrXCRfN0ZmciduKkg0LVY4VXJAIUM7N1BJQGQhWDFcOUlkIV1eMElyNENfYT5WNG0zPjYuKC1AS2YoUyU/ITxYPV8lZnNZP2JlcShpIiovVWJgZSEoPGxbMjZYLkZtOXVfRyc3O2RaKmJGUjgjVWY5aEdFRldUP1A4XXM0ckpqVGEiYGxSJkZfMz9ZY2E/RTVwIyVyRmVvVEErQ0YxPWRiOktgVkwiNi5JWWZjTTI+UVNMLEhtJSNfNypGW1dLbik1NVFGV00pUHFdPT1gcVZaZFtFUUwmakFHWlBKS1xTSnJiIilBWmM8TC83LDxnaFE2ODBJNSdDMmpKVGc2O3JfajZjZEBUSEYqZmkpIz1Obi8pXyJVcF41Slo4Ly9EYyVuLUE2RWYhN09KNiQjSTthMyRTLm0vc0dkYEVzb1U+Kkk4NXNWSCIqIjRWS0EyOVJKXTFccEdsRzpPY21sIyUxRSYwNiJQPHEuOSpxcFlYcCZyTFoiXlE9SWI5PXQvKisvKiEiIzNGS14rRFxaWSFbKHJXaDZVRCstVipkRipMREUnMUQ3PTlGV2UnV3NwPFhpNkVuVjZVMGsxXkcyIW03MDtyRjBiVT1eM3M7SUBBQDhaWzxGJSNuXVBCbktGXzYudCxZU0cqPyxwJ2RqOVpsMTYtWy1XYzw9SC9cWGRVNTlHMUlkPSNOb2BVXiQiPjA6Rk10OElQVWcxYGQySlw9MkJSVEYnRjdoR1AtZFF0SEgpZVFDciRtR3E7TlZyXl9JSD07Q0I9a05gPUsnJW1mQFAwM25jUnBMXU5jSXUpcig2UlU8aFxYM20jN0RUKlUkUD87Zio6a19oNCVvUDwmY1VFYEohXVE6bEFjTkhJQWkoa1xVIkZKYCIrMUxVdSw5WFc2b1MuYVdxWUljZkgpUTErJlJnbCo5SEZyK0IqPjxPbEQkcV1GZS1CcU0mNEBGbURFYkBTLzxrR2tdRGZHcmhtVHJLM21Za3JfIktFJTJgRiZDWk01VURpYFYvO0c5S0o/cSVoZ0xgbm87RTZvOzRQdC03Wj0mTWhNcFxxS1JLVmpQZm1eIiwmSDZlX1QzUDlYIyE2cG1xN1k5X1RzMzVVY05YXyk2XUs+Qz9bKCpVL2M0SjYsPiQ8XkAzUUtgKS9xJG1UOF0nOzVwRWErImxcKF9eRzErUV47Z0Q4U1dAc0Q3SC0kUVVNOShTKVJqVGxuN1FLU1BUMDFzJj0wYjdqdCRJJWRRWDtUbCI0bDR0NnEuTytCWCgkOSFkZT4uO0lfO21LSUM4UiJFQzIuN2JaRDw/IWQvNEhQS2gkP1lORWMqaFFePG9MSHA2dXFWWV9lSkosPEs7amNccy1HU2YoKjs0WXI2VnE1S0xAPEcrY0YsVDtNP2FbY088TENGIjxVUmk8WiNYb3NNaUEhaiZDIXFjcCkraik3ZisobEsxdCJ0XF00dD9fZ0pxPWBuPys+YSVSakdWZ1dSQCFlRl5AJl42ZnQxcHU2UU9bVSFnQjxScE0hZlFaRnAlbi5iTjo1JDFfbERBaVlccD5pNXFpNFIlcmwtKD5sbGM4Xko6c2FJMmBEamYuRV1qRDhEKSw6NjksSF1OQ251blVqQVRHVU4pL1cyKFFiOU9LVE5pJ1FzRm0/UVBeKCIqQlNNPmFPY2IvRSY2MipJUF43S0owJUZcP2xiKC9aYyFRKFtucjlDWTBBPT0iVUhuTmJqM0YlW280OGQqJE0+R0VZIy1yV1JhKSVBIX4+ZW5kc3RyZWFtCmVuZG9iagoyNSAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAyNDcwCj4+CnN0cmVhbQpHYXUxMD8mdGMjJnIsbFIvKmNcOUZVaiElIVxROl5tJS4zWDNEbWZFLlQxLkhcRXRIVTBZciFIa01NbkhUVz8zcFA+ITBdPGdvamxSZDAxNGhnUFE8T1ErI2tyKigwQURWIj1NXSpwRnVsUSdMXzBzTFdfaGxUcy5pUDBpVkM8KktjWyMpci1LPk0uajszVjdWKmQySSY4UXF1b2tvZUErYm1PVzE7Vkota11QcUgyNmxGKTtJKEo9QUVgblBlKDdMTitXK2ZzZGVtJjYkT1hANSVvbFAjNTlWR2RwNjQ6LD1CIkJiKThmWVFFNVoqRFw6MlV1K1JhbW84JC1nVyYsVk4pcz1Za2RXTmxVYG5lTElxOCptTjMnMVNjRmBzJ2o6KGxAK0Z1VTIjX008ZmouTD4pWDF0MzF1YVZOW00xL3A2WyRRYkFuVEYtSXVWJG9gPiY3b0NhXDpyc0onTlRtKVoyM2BkKDBLPzw/ZDk0J1prN0lcZSdRJUROPURyR0hzazFZR2RnaFBiamFvblVhbWVBQ11vXlU2LzpbLG4uX1tXaHJNQUw9MW9aYl5rbkBzMU9ycFBVYV5BbV0/SF1gJDRvSmc/Ry0jcFhqTVcmW2Y4UzI4ZTFnaGIrTDp0azskSV9nMyVzNywlcVxEQTRTclBMSFllSTxxaHIpTD1GbVRzIUhPayZuXkB0c2IuOUBBJCI+JD1pO2Q/PT9oRHI2aD1KbV8vOG5FIi1AUCd1KFBVXCtWUjQ6YSJYR1hoWmpjaEJwUjFyVD5mWWFSdHBgS09xaldTZiddWCMlLmRrXChVPFQpcVw/RWkiUmsqIjVqVTdXcFhcUT5YQWopUUBaPiQlZmVSVV9JXCxXXGoyMy1wXytrVjdqRWgnKCkoIW1fT0xVTz5cTW5rZC1sPU46ZTpNXmdUbGsqLjtjUzxeMERFNWcoa0JDRidTR3JVTkRgJlVQPWE0LlBTPF0xSG0ycWpRV1RRPnItL1lEU2djRFYiNztvYj9PJz5yR0ovWGpjOTxmKygicXNyOkk2biVuWj5ja3MubmJlWC1JL1M/WTxTLj1hXTptUiNtIUU8YiMnanFrPldgQDFCJGJhaSRcaG08KzpmP2NDa0hzKShWY04sSikwT1pEVGklK2ZdMWcuMlgrcVwuYnFTYFY7M10iRF8tcmpqLiJiUGBaXGAyPSNdZ0EiU0VAZUlYaGtHWTFnNyIybyovcipZWmM6X2BgL11KaEwhKC50PS5WKid0U2MsIjI7K2pHdVthWz5CIm41UEgyZC5ncjZxPG4/SmtARFtGLmY7VThoMmYjYjE7ZEBGMituTXRZanFISjgnYWMiQWAjNWZSMyliIW5gYmEhP0wsR09VS3NRSiJsXG1cWlY5bj8yRVYpNlRiQStgL1Rpcj09OztqIUpXUiw3VEJyLGcjaiI9LCZlMTBsT2xyVT05KSMsQCJIPWIxV28xNXRQTioyWGAtUi1nbCddWT0uNzk3b3IxOGRbZHEtRCVfPiNSVyVjZ1Q3S191MikmM2c9OnJtYSNhMD9BOk5QPkp0PSs0bnE6a14sdGBOXz0pUFE1UHVIPV5aakwyZTFRTVo+NVAjTjwrLlNtUC1rbEk8YjMoPCx1I01JMV1qRlBHKEVVRGkhISJxQDUhXldiQi87Nz5OdUFpOEshWF8vT2gzXUxlOCFrTm9QWDc7Q1NHU0M+IVsoZF0/dCo/QXFqUWdHPlg3YTk+SG5ERDthJkY9YE1HZydDRWFJVyFQJGstZUQ4ZWAoYksuKFssWC5cRT89MUJPTyJxTlsuV0YyYSgxZ1YxW01cblBLK1duKiZfZl5IT2olV3NIPWUxSjh0WVIwWWAkaGYkbkM3Nk0sLCx1XEI8VFA8V2QmbFVXXEVHc0lMJXJaLUhqaiRkZjRNImQqS2ElSjAmaG9DQi1cWlFAQS9lSz1DXXNmKC83LTNVT3RPWTtVQFpeTiRxZSMpQS8qYFpiZW46TlNRIT5dM20nXnFRYTpTTWwiOl42SF4vcixtdEA/S01kU1ZnYWM5YyxJLCpBQiREbC84dTw8X2ttTmY3P0JpISdZazYnUi1DLTlDbSpTWSVyRzBqUmJnLFsqbGhlcUNlOVlLMlw7QV4+XkglPE1hZiJpUzRKPllxRDxuN1xvXSc6NG9aWUwmSVgoTVtiKToySUxbLVxFQlI0PjpJWllybzhmRWk9a146M0NAcV9qSjxvdEFQOitLPTtMOEsuOWQkK2hcYzNvQHIuQmtOMmArJ14pQTE0OTIxNmJbczYiajwpJmhkanEuSlQrWGUxTU9HYEItRXFWLjc+PGRSSGpXb2xIJksxVCVUYjBcIyM9J2NCV2FKdFtSQGIwQzxKTVdlLE5XJSNYZWhzR3FYbkdCZUMqSmJWOG5sUys3cSJiampwSzZJPkY4NU5PPTc+bXRMUE5HWjonJHUjXjg+XT9ydSQzNkpGNTZuaDgoPVVUNE90OyZsWCNYb18tdUUnczhkMyQuaFZnbmFfVl1VX1YpXFJ1VD9hKkAhQ2VLRmYlMmAhQidAIlNCUWQmdHIwNCZCPFkoI1RMJ11gMmciR2xsbS43LUBLJSFeUCxNQzo4KnBcS1RaRURCdTZiTjU0MDBFYUg5VGApNy9IQCNVTjo7R2pKXFxNTC80X0RMcC5iNC4kUyprMlJRXG1dUSdiXEYjYTJZNjMtLS50PzRKRyxUVVxpc1I6WV4pTUg6UzIoP3NJZEhwOFEsKDNIcFlAX2lVR2t0dUpePzInJilIOUNoXWUnPWZKVFFXSVYxdXBCTD5SMyI+Uz0tODRiJEdDL1pgTVdcI2ZJIy0lTiQqND0hQTVcZjlwKyw3PyQ+VUBaTzg0YS89TXVnZ05JZyFWKFYpM2RnO049JVY8akU+ayMsczY+bGVEV0AxZz5QRzJdKVUxNEkuK0xnNFtVbnJSZGsuMUl1WGsvM3A0VFpcZm0lQGZdSWs1QG4lKU9HYDcnIWlbZms7cjpCImY3XHB1PSpdWmxlRVFhQjBiIWNcbFVIQltENXVJbmhdO1peI04rLklYYUtvMF1CcVA8SlkoNmBpdDNBPiFULVRSRFArbkhjR2JSQGgnb1QnYlxtWk4rVGpSUW9cM2VfOCxvOV5ZY1JIYjEic0VvPWJlVSpibUkpWUlSMltSUj1ucCE/VHIxX01ANGgucHBLbi0jXyNXcTZVJ0hdRiwtIlxDcTpWRSlxYGNTQEBaYDA+Qm5mbTZYQTRRUnMnJj1uX0crMiM+bVRXPik3WDNxRUlBOD5fYH4+ZW5kc3RyZWFtCmVuZG9iagoyNiAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAxMDQwCj4+CnN0cmVhbQpHYXQlIWdNWV8xJjpPOlNiW1ssQ2dSWiNyaGB0IkEyKEI+I01BI1Q5YjZIYD0nNis/JGhmbF5NZ1MlPyskM1pnWFNUQUNUY2BSaj5JNShaRzxXTHFpNSgsXl4hVTFWdEBMQ09Wa2JlX1FvW3RkWSt0aERQMUxbWmxWaVdxJSpHYmY0PnBSWD5MJDQmNFY3QThabCdFbjslPmB0LmFiI2pkWFxcMm84S1Q+KCRJbSZ0ZG1kSlhKPikjT01qUjUoYC1iWDhbSWhMZWxaPjRcSF1GXWdVdUJsUj9wW0M5SG43PmtjN3Q9MEpUNnQ7LlpyTD9YNHBhSjgvK2FqZipzKFMwSSxVLV9eJ0hZNjlJIz1CWyYqLTBvTVFBPz8rTV9CJC1qIlJiYV5BZk09QlNhSzJBS2BjQXBBajRbbW4kMSNtaD49X2ByRUxqPkZmIj9eLTNpXm0hWTViKkYvNk89LGEwY1lWPHM0VUVjK0xFQUI7ZTcxKGpfIidbZmhQJC9JYl5RKGciWT9ZMkVUcHBFJWM/T0J0bmUsRidqKyJLdVo0YjldYlI6PSl0PyJQVmh1WUc6cWMhMyZxOFBRWiZKQGskbjFLRXBgL1pbQT5aTWlTRmVfLkorZ2taaDZrLDFFZSVha1RITFJcdDhUZEU4aDVMN18qSEBAPyZEVXEoRT5kcSx0QV9nNkFnPypFXiopWS8kVWZZVk04Ols6L2ovbWU7MS9fT0UmM2EvNyQpTVIhcjtqPF4nJU0kWllLWkM7Rz1lSCUvJWVGS01CIk1rYl5iNzF1aG8oK15Bcz1aUFd1TCUpNEE2TkFObTIoQmMjdUtEIld0amUtXG9nMGktKUIvUzUsTytuU202WFhnQyYuMHAoZkNiTlloQldDdWFCN2MwS0soXFE5YjUvWmNiJ0snSTcjTlxcLzw0QD81cjZeL2hDRUltJF81UTZVaGUqJ24uRlJiXV5POS5DVHFaRmlDS1tfVDYzL29pQGZebWFZbUkrXFtfJlZjQzYtW2tjTlctXDxiT3Ajb0xERWxdKlYxaCxYYkRaT3FPbE46UiUoUE5CVyhoZiRFUSdbXDxyUGBCJFlcZCJuJm5MUilZQ0VeTm1pZWo6KHA+JVE+QVFQXlIqLDpRIjBCMSs8b2szPnRiR3E1dT1DcmlRM0JEa2xfYiVtO2ZiOVw4Nl1pLiYmJkZVYXFTQmMzZVwhKl5NTjslVj08ZypTR28+cT1EZG4oVjtBck8zJU9rck0yKCVpYk5lQGYwYEcyKDxbX2U4YGUjViZLQTFpT01cXExiLW1NOlMrSyozcUBwKVFJajgrTid1OGNmJyJyZUYsXXQjITFRalxGJilEP3ApKjc5InRnYk4qRSQ8cXVMM0BdVDN+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDI3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDA2MSAwMDAwMCBuIAowMDAwMDAwMTIyIDAwMDAwIG4gCjAwMDAwMDAyMjkgMDAwMDAgbiAKMDAwMDAwMDMzNyAwMDAwMCBuIAowMDAwMDAwNDQ5IDAwMDAwIG4gCjAwMDAwMDA1NTkgMDAwMDAgbiAKMDAwMDAwMDc2NCAwMDAwMCBuIAowMDAwMDAwOTY5IDAwMDAwIG4gCjAwMDAwMDExNzQgMDAwMDAgbiAKMDAwMDAwMTM3OSAwMDAwMCBuIAowMDAwMDAxNTg1IDAwMDAwIG4gCjAwMDAwMDE3OTEgMDAwMDAgbiAKMDAwMDAwMTk5NyAwMDAwMCBuIAowMDAwMDAyMjAzIDAwMDAwIG4gCjAwMDAwMDI0MDkgMDAwMDAgbiAKMDAwMDAwMjQ3OSAwMDAwMCBuIAowMDAwMDAyODEzIDAwMDAwIG4gCjAwMDAwMDI5MjYgMDAwMDAgbiAKMDAwMDAwNDA4OCAwMDAwMCBuIAowMDAwMDA1ODYxIDAwMDAwIG4gCjAwMDAwMDcyNjcgMDAwMDAgbiAKMDAwMDAwODcwMCAwMDAwMCBuIAowMDAwMDEwMTI3IDAwMDAwIG4gCjAwMDAwMTE1ODQgMDAwMDAgbiAKMDAwMDAxMzA0NiAwMDAwMCBuIAowMDAwMDE1NjA4IDAwMDAwIG4gCnRyYWlsZXIKPDwKL0lEIApbPGM2YmJiOWUyODFmMjkwNmQzOTJiNjJhMTlhZTE1YjkzPjxjNmJiYjllMjgxZjI5MDZkMzkyYjYyYTE5YWUxNWI5Mz5dCiUgUmVwb3J0TGFiIGdlbmVyYXRlZCBQREYgZG9jdW1lbnQgLS0gZGlnZXN0IChvcGVuc291cmNlKQoKL0luZm8gMTYgMCBSCi9Sb290IDE1IDAgUgovU2l6ZSAyNwo+PgpzdGFydHhyZWYKMTY3NDAKJSVFT0YK";
-
-  /* ==========================================================
      CONFIG — everything the administrator needs to edit lives
      here. Update these values and the whole site updates.
      ========================================================== */
   const CONFIG = {
-    priceDisplay: "3,000₦",
+    priceDisplay: "₦3,000",
     priceRaw: "3,000",
 
-    // Payment details
+    // Payment details (fill in real details when available)
     payment: {
-      accountName: "Suleiman Adamu Mohammed",
-      bankName: "OPay",
-      accountNumber: "9073528916",
-      instructions: "After paying, save a screenshot of your receipt — you will attach it manually when sending your registration on WhatsApp."
+      accountName: "To be provided",
+      bankName: "To be provided",
+      accountNumber: "To be provided",
+      instructions: "Bank transfer details will be confirmed here. After paying, take a screenshot or save your receipt — you will attach it manually when sending your registration on WhatsApp."
     },
 
     // Administrator WhatsApp number in international format, no + or spaces
@@ -1185,6 +1170,9 @@
     // Contact footer
     contactEmail: "adamusuleiman20001@gmail.com",
     contactWhatsappDisplay: "+234 907 352 8916",
+
+    // Workbook file — place the actual PDF beside this HTML file
+    workbookFile: "beyond-the-degree-workbook.pdf",
 
     // Optional: official WhatsApp community group link, shared after
     // manual payment approval (not shown publicly on the page)
@@ -1210,7 +1198,7 @@
   document.getElementById("footerEmail").href = "mailto:" + CONFIG.contactEmail;
   document.getElementById("footerEmail").textContent = CONFIG.contactEmail;
 
-  document.getElementById("downloadWorkbookBtn").href = "data:application/pdf;base64," + WORKBOOK_PDF_BASE64;
+  document.getElementById("downloadWorkbookBtn").href = CONFIG.workbookFile;
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -1287,194 +1275,50 @@
   });
 
   document.getElementById("toWhatsappStepBtn").addEventListener("click", function(){
+    buildWhatsappLink();
     goToStep(4);
+    // Auto-open WhatsApp immediately — this click is the user gesture that
+    // allows the popup, so no separate tap is needed to get there.
+    const link = document.getElementById("sendWhatsappBtn").href;
+    window.open(link, "_blank");
+    setTimeout(() => {
+      document.getElementById("waActionRow").style.display = "none";
+      document.getElementById("preWaBlock").style.display = "none";
+      document.getElementById("finalConfirm").style.display = "block";
+    }, 500);
   });
 
-  function downloadImage(dataUrl, filename){
-    const a = document.createElement("a");
-    a.href = dataUrl;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
-  /* ==========================================================
-     Registration summary image — a clean, white-background,
-     Beyond the Degree branded card built on a canvas so the
-     participant's details can be attached as an image on
-     WhatsApp instead of a long text message.
-     ========================================================== */
-  function roundRectPath(ctx, x, y, w, h, r){
-    ctx.beginPath();
-    ctx.moveTo(x+r, y);
-    ctx.arcTo(x+w, y, x+w, y+h, r);
-    ctx.arcTo(x+w, y+h, x, y+h, r);
-    ctx.arcTo(x, y+h, x, y, r);
-    ctx.arcTo(x, y, x+w, y, r);
-    ctx.closePath();
-  }
-
-  function wrapCanvasText(ctx, text, maxWidth){
-    const words = String(text || "—").trim().split(/\s+/);
-    const lines = [];
-    let line = "";
-    words.forEach(function(w){
-      const test = line ? line + " " + w : w;
-      if(ctx.measureText(test).width > maxWidth && line){
-        lines.push(line);
-        line = w;
-      } else {
-        line = test;
-      }
-    });
-    if(line) lines.push(line);
-    return lines;
-  }
-
-  function generateRegistrationImage(d){
-    const scale = 2; // render at 2x for a crisp, non-blurry export
-    const width = 900;
-    const padX = 50;
-    const contentW = width - padX*2;
-    const GREEN = "#0f6b3a";
-    const GREEN_DARK = "#0b2818";
-
-    const fields = [
-      ["Full Name", d.fullName],
-      ["WhatsApp Number", d.whatsapp],
-      ["Age", d.age],
-      ["Institution", d.institution],
-      ["Course", d.course],
-      ["Why I Want To Participate", d.why],
-      ["My Main Concern About Campus", d.concern],
-      ["What I Expect To Gain", d.expect],
-      ["Skill I Want To Develop", d.skill],
-      ["What I Know About Earning From Skills", d.earning],
-      ["Where I See Myself In Five Years", d.fiveYears]
+  function buildWhatsappLink(){
+    const d = registrationData;
+    const lines = [
+      "Assalāmu ʿalaykum. I am registering for Beyond the Degree: Deen, Degree & Destiny.",
+      "",
+      "Name: " + (d.fullName || ""),
+      "WhatsApp Number: " + (d.whatsapp || ""),
+      "Age: " + (d.age || ""),
+      "Institution: " + (d.institution || ""),
+      "Course: " + (d.course || ""),
+      "Why I want to participate: " + (d.why || ""),
+      "My main concern about campus: " + (d.concern || ""),
+      "What I expect to gain: " + (d.expect || ""),
+      "Skill I want to develop: " + (d.skill || ""),
+      "What I know about earning from skills: " + (d.earning || ""),
+      "Where I see myself in five years: " + (d.fiveYears || ""),
+      "",
+      "I have paid the " + CONFIG.priceDisplay + " registration fee and attached my payment receipt."
     ];
-
-    // Measuring pass to compute each card's wrapped lines and total height
-    const measureCanvas = document.createElement("canvas");
-    const mctx = measureCanvas.getContext("2d");
-    mctx.font = "700 15px Helvetica, Arial, sans-serif";
-    const rows = fields.map(function(f){
-      const lines = wrapCanvasText(mctx, f[1], contentW - 40);
-      const cardH = lines.length*21 + 50;
-      return {label: f[0], lines: lines, cardH: cardH};
-    });
-
-    const headerH = 176;
-    let height = headerH;
-    rows.forEach(function(r){ height += r.cardH + 14; });
-    height += 76; // footer band
-
-    const canvas = document.createElement("canvas");
-    canvas.width = width*scale;
-    canvas.height = height*scale;
-    const ctx = canvas.getContext("2d");
-    ctx.scale(scale, scale);
-
-    // white background
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, width, height);
-
-    // bold green header band
-    ctx.fillStyle = GREEN_DARK;
-    ctx.fillRect(0, 0, width, headerH);
-
-    // white badge
-    ctx.fillStyle = "#ffffff";
-    roundRectPath(ctx, padX, 42, 58, 58, 14);
-    ctx.fill();
-    ctx.fillStyle = GREEN_DARK;
-    ctx.font = "700 24px Georgia, 'Times New Roman', serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText("BD", padX+29, 42+30);
-    ctx.textAlign = "left";
-    ctx.textBaseline = "alphabetic";
-
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "700 28px Georgia, 'Times New Roman', serif";
-    ctx.fillText("BEYOND THE DEGREE", padX+76, 42+30);
-    ctx.font = "700 12.5px Helvetica, Arial, sans-serif";
-    ctx.fillStyle = "#d7f0e0";
-    ctx.fillText("REGISTRATION FORM  ·  DEEN · DEGREE · DESTINY", padX+76, 42+54);
-
-    // thick white rule closing the header
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, headerH-6, width, 6);
-
-    let cy = headerH + 26;
-    rows.forEach(function(r){
-      // bold green left bar + white card with green border
-      ctx.fillStyle = "#ffffff";
-      roundRectPath(ctx, padX, cy, contentW, r.cardH, 8);
-      ctx.fill();
-      ctx.strokeStyle = GREEN;
-      ctx.lineWidth = 2;
-      roundRectPath(ctx, padX, cy, contentW, r.cardH, 8);
-      ctx.stroke();
-
-      ctx.fillStyle = GREEN;
-      roundRectPath(ctx, padX, cy, 7, r.cardH, 3);
-      ctx.fill();
-
-      ctx.fillStyle = GREEN_DARK;
-      ctx.font = "700 13px Helvetica, Arial, sans-serif";
-      ctx.fillText(r.label.toUpperCase(), padX+24, cy+28);
-
-      ctx.fillStyle = "#111111";
-      ctx.font = "700 15px Helvetica, Arial, sans-serif";
-      let ly = cy+50;
-      r.lines.forEach(function(line){
-        ctx.fillText(line, padX+24, ly);
-        ly += 21;
-      });
-
-      cy += r.cardH + 14;
-    });
-
-    // bold green footer band
-    ctx.fillStyle = GREEN_DARK;
-    ctx.fillRect(0, cy+10, width, height-(cy+10));
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "700 13px Helvetica, Arial, sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText("POWERED BY ABU ZAYD SOLUTIONS", width/2, cy+10 + (height-(cy+10))/2 + 5);
-    ctx.textAlign = "left";
-
-    return canvas.toDataURL("image/png");
-  }
-
-  /* ==========================================================
-     Sending the registration image straight into WhatsApp.
-     Always opens wa.me/<number> — Abu Zayd's exact chat, set in
-     CONFIG.adminWhatsappNumber — so the participant is never
-     shown a generic picker of apps or contacts. The image
-     downloads at the same moment; WhatsApp itself still requires
-     one manual tap to attach a file to a chat (no website can
-     skip that step), but which chat it lands in is fixed.
-     ========================================================== */
-  function buildWhatsappMessage(){
-    return "As-salāmu alaykum warāhmatullāhi wabarakātuh. Here is the copy of my form, and shortly I will send proof of payment. Thanks for the opportunity, Abu Zayd.";
-  }
-
-  function sendRegistrationToWhatsapp(){
-    const dataUrl = generateRegistrationImage(registrationData);
-    const message = buildWhatsappMessage();
-
-    downloadImage(dataUrl, "Beyond-the-Degree-Registration.png");
-    const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + encodeURIComponent(message);
-    window.open(link, "_blank");
+    const message = encodeURIComponent(lines.join("\n"));
+    const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + message;
+    document.getElementById("sendWhatsappBtn").href = link;
   }
 
   document.getElementById("sendWhatsappBtn").addEventListener("click", function(){
-    sendRegistrationToWhatsapp();
-    document.getElementById("waActionRow").style.display = "none";
-    document.getElementById("preWaBlock").style.display = "none";
-    document.getElementById("finalConfirm").style.display = "block";
+    // Give the WhatsApp tab a moment to open, then reveal final confirmation
+    setTimeout(() => {
+      document.getElementById("waActionRow").style.display = "none";
+      document.getElementById("preWaBlock").style.display = "none";
+      document.getElementById("finalConfirm").style.display = "block";
+    }, 400);
   });
 
 })();
