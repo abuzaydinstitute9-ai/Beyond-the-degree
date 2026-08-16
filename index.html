@@ -1014,11 +1014,10 @@
         <div class="step-panel" data-step="4">
           <div class="confirm-box" id="preWaBlock">
             <h4 style="text-align:left;">Complete Your Registration</h4>
-            <p style="text-align:left;">A clean summary image of your registration details has been saved to your device. Open WhatsApp and attach that image, together with your payment receipt, before sending.</p>
-            <div class="note-box" style="text-align:left;">Look for a file named <strong>Beyond-the-Degree-Registration.png</strong> in your downloads or photos.</div>
+            <p style="text-align:left;">Tap the button below to send your registration image straight to WhatsApp. On most phones, WhatsApp will open with the image and message ready — just pick the admin chat and send. Your payment proof can follow shortly after.</p>
           </div>
           <div class="step-actions" id="waActionRow">
-            <a class="btn btn-primary btn-block" id="sendWhatsappBtn" href="#" target="_blank" rel="noopener">Send Registration to WhatsApp</a>
+            <button type="button" class="btn btn-primary btn-block" id="sendWhatsappBtn">Send to WhatsApp Now</button>
           </div>
 
           <div id="finalConfirm" style="display:none;">
@@ -1288,26 +1287,8 @@
   });
 
   document.getElementById("toWhatsappStepBtn").addEventListener("click", function(){
-    const dataUrl = generateRegistrationImage(registrationData);
-    downloadImage(dataUrl, "Beyond-the-Degree-Registration.png");
-    buildWhatsappLink();
     goToStep(4);
   });
-
-  function buildWhatsappLink(){
-    const d = registrationData;
-    const lines = [
-      "Assalāmu ʿalaykum. I am registering for Beyond the Degree: Deen, Degree & Destiny.",
-      "",
-      "Name: " + (d.fullName || ""),
-      "WhatsApp Number: " + (d.whatsapp || ""),
-      "",
-      "I have attached a summary image of my registration details, along with my payment receipt for the " + CONFIG.priceDisplay + " registration fee."
-    ];
-    const message = encodeURIComponent(lines.join("\n"));
-    const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + message;
-    document.getElementById("sendWhatsappBtn").href = link;
-  }
 
   function downloadImage(dataUrl, filename){
     const a = document.createElement("a");
@@ -1354,8 +1335,10 @@
   function generateRegistrationImage(d){
     const scale = 2; // render at 2x for a crisp, non-blurry export
     const width = 900;
-    const padX = 56;
+    const padX = 50;
     const contentW = width - padX*2;
+    const GREEN = "#0f6b3a";
+    const GREEN_DARK = "#0b2818";
 
     const fields = [
       ["Full Name", d.fullName],
@@ -1374,16 +1357,17 @@
     // Measuring pass to compute each card's wrapped lines and total height
     const measureCanvas = document.createElement("canvas");
     const mctx = measureCanvas.getContext("2d");
-    mctx.font = "400 14.5px Helvetica, Arial, sans-serif";
+    mctx.font = "700 15px Helvetica, Arial, sans-serif";
     const rows = fields.map(function(f){
-      const lines = wrapCanvasText(mctx, f[1], contentW - 36);
-      const cardH = lines.length*20 + 46;
+      const lines = wrapCanvasText(mctx, f[1], contentW - 40);
+      const cardH = lines.length*21 + 50;
       return {label: f[0], lines: lines, cardH: cardH};
     });
 
-    let height = 170; // header
+    const headerH = 176;
+    let height = headerH;
     rows.forEach(function(r){ height += r.cardH + 14; });
-    height += 70; // footer
+    height += 76; // footer band
 
     const canvas = document.createElement("canvas");
     canvas.width = width*scale;
@@ -1392,94 +1376,127 @@
     ctx.scale(scale, scale);
 
     // white background
-    ctx.fillStyle = "#fffefb";
-    ctx.fillRect(0, 0, width, height);
-    ctx.strokeStyle = "#dfe3da";
-    ctx.lineWidth = 1;
-    ctx.strokeRect(10, 10, width-20, height-20);
-
-    // header badge
-    ctx.fillStyle = "#175c39";
-    roundRectPath(ctx, padX, 36, 52, 52, 14);
-    ctx.fill();
     ctx.fillStyle = "#ffffff";
-    ctx.font = "700 20px Georgia, 'Times New Roman', serif";
+    ctx.fillRect(0, 0, width, height);
+
+    // bold green header band
+    ctx.fillStyle = GREEN_DARK;
+    ctx.fillRect(0, 0, width, headerH);
+
+    // white badge
+    ctx.fillStyle = "#ffffff";
+    roundRectPath(ctx, padX, 42, 58, 58, 14);
+    ctx.fill();
+    ctx.fillStyle = GREEN_DARK;
+    ctx.font = "700 24px Georgia, 'Times New Roman', serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("BD", padX+26, 36+27);
+    ctx.fillText("BD", padX+29, 42+30);
     ctx.textAlign = "left";
     ctx.textBaseline = "alphabetic";
 
-    ctx.fillStyle = "#0b2818";
-    ctx.font = "700 24px Georgia, 'Times New Roman', serif";
-    ctx.fillText("Beyond the Degree", padX+68, 36+24);
-    ctx.fillStyle = "#1d7a49";
-    ctx.font = "600 11px Helvetica, Arial, sans-serif";
-    ctx.fillText("REGISTRATION SUMMARY", padX+68, 36+44);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "700 28px Georgia, 'Times New Roman', serif";
+    ctx.fillText("BEYOND THE DEGREE", padX+76, 42+30);
+    ctx.font = "700 12.5px Helvetica, Arial, sans-serif";
+    ctx.fillStyle = "#d7f0e0";
+    ctx.fillText("REGISTRATION FORM  ·  DEEN · DEGREE · DESTINY", padX+76, 42+54);
 
-    ctx.strokeStyle = "#b8902e";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(padX, 118);
-    ctx.lineTo(padX+70, 118);
-    ctx.stroke();
+    // thick white rule closing the header
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, headerH-6, width, 6);
 
-    let cy = 150;
+    let cy = headerH + 26;
     rows.forEach(function(r){
-      ctx.fillStyle = "#f2f8f4";
-      roundRectPath(ctx, padX, cy, contentW, r.cardH, 10);
+      // bold green left bar + white card with green border
+      ctx.fillStyle = "#ffffff";
+      roundRectPath(ctx, padX, cy, contentW, r.cardH, 8);
       ctx.fill();
-      ctx.strokeStyle = "#e4f1e8";
-      ctx.lineWidth = 1;
-      roundRectPath(ctx, padX, cy, contentW, r.cardH, 10);
+      ctx.strokeStyle = GREEN;
+      ctx.lineWidth = 2;
+      roundRectPath(ctx, padX, cy, contentW, r.cardH, 8);
       ctx.stroke();
 
-      ctx.fillStyle = "#b8902e";
-      ctx.beginPath();
-      ctx.arc(padX+18, cy+24, 3, 0, Math.PI*2);
+      ctx.fillStyle = GREEN;
+      roundRectPath(ctx, padX, cy, 7, r.cardH, 3);
       ctx.fill();
 
-      ctx.fillStyle = "#12432b";
-      ctx.font = "700 12.5px Helvetica, Arial, sans-serif";
-      ctx.fillText(r.label.toUpperCase(), padX+30, cy+28);
+      ctx.fillStyle = GREEN_DARK;
+      ctx.font = "700 13px Helvetica, Arial, sans-serif";
+      ctx.fillText(r.label.toUpperCase(), padX+24, cy+28);
 
-      ctx.fillStyle = "#12140f";
-      ctx.font = "400 14.5px Helvetica, Arial, sans-serif";
-      let ly = cy+48;
+      ctx.fillStyle = "#111111";
+      ctx.font = "700 15px Helvetica, Arial, sans-serif";
+      let ly = cy+50;
       r.lines.forEach(function(line){
-        ctx.fillText(line, padX+18, ly);
-        ly += 20;
+        ctx.fillText(line, padX+24, ly);
+        ly += 21;
       });
 
       cy += r.cardH + 14;
     });
 
-    ctx.strokeStyle = "#dfe3da";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(padX, cy+8);
-    ctx.lineTo(width-padX, cy+8);
-    ctx.stroke();
-
-    ctx.fillStyle = "#3c4038";
-    ctx.font = "400 11px Helvetica, Arial, sans-serif";
-    ctx.fillText("Beyond the Degree — Deen · Degree · Destiny", padX, cy+32);
-    ctx.fillStyle = "#b8902e";
-    ctx.font = "700 11px Helvetica, Arial, sans-serif";
-    ctx.textAlign = "right";
-    ctx.fillText("POWERED BY ABU ZAYD SOLUTIONS", width-padX, cy+32);
+    // bold green footer band
+    ctx.fillStyle = GREEN_DARK;
+    ctx.fillRect(0, cy+10, width, height-(cy+10));
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "700 13px Helvetica, Arial, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("POWERED BY ABU ZAYD SOLUTIONS", width/2, cy+10 + (height-(cy+10))/2 + 5);
     ctx.textAlign = "left";
 
     return canvas.toDataURL("image/png");
   }
 
+  /* ==========================================================
+     Sending the registration image straight into WhatsApp.
+     On phones that support the Web Share API with files
+     (most Android/iOS browsers), this opens WhatsApp directly
+     with the image and message ready to send — no gallery
+     download needed. On devices that don't support this
+     (mainly desktop), the image downloads automatically and
+     WhatsApp opens with the message pre-filled so it can be
+     attached manually.
+     ========================================================== */
+  function buildWhatsappMessage(){
+    return "As-salāmu alaykum warāhmatullāhi wabarakātuh. Here is the copy of my form, and shortly I will send proof of payment. Thanks for the opportunity, Abu Zayd.";
+  }
+
+  async function sendRegistrationToWhatsapp(){
+    const dataUrl = generateRegistrationImage(registrationData);
+    const message = buildWhatsappMessage();
+    let sharedDirectly = false;
+
+    try {
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      const file = new File([blob], "Beyond-the-Degree-Registration.png", { type: "image/png" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          text: message,
+          title: "Beyond the Degree Registration"
+        });
+        sharedDirectly = true;
+      }
+    } catch (err) {
+      // Share was cancelled or unsupported — fall back below.
+      sharedDirectly = false;
+    }
+
+    if (!sharedDirectly) {
+      downloadImage(dataUrl, "Beyond-the-Degree-Registration.png");
+      const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + encodeURIComponent(message);
+      window.open(link, "_blank");
+    }
+  }
+
   document.getElementById("sendWhatsappBtn").addEventListener("click", function(){
-    // Give the WhatsApp tab a moment to open, then reveal final confirmation
-    setTimeout(() => {
+    sendRegistrationToWhatsapp().finally(function(){
       document.getElementById("waActionRow").style.display = "none";
       document.getElementById("preWaBlock").style.display = "none";
       document.getElementById("finalConfirm").style.display = "block";
-    }, 400);
+    });
   });
 
 })();
