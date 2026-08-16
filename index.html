@@ -441,6 +441,26 @@
   }
   .field.invalid input,.field.invalid textarea{border-color:#b3261e;}
   .field.invalid .err{display:block;}
+  .yesno-group{display:flex;gap:10px;}
+  .yesno-pill{
+    flex:1;position:relative;text-align:center;
+    padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;
+    font-size:.92rem;font-weight:600;color:var(--ink-soft);
+    cursor:pointer;transition:border-color .15s ease, background .15s ease, color .15s ease;
+    background:#fff;
+  }
+  .yesno-pill input{
+    position:absolute;opacity:0;width:0;height:0;
+  }
+  .yesno-pill:has(input:checked),
+  .yesno-pill.selected{
+    border-color:var(--green-600);
+    background:var(--green-50);
+    color:var(--green-800);
+  }
+  .yesno-pill:has(input:focus-visible){
+    outline:3px solid var(--green-500);outline-offset:2px;
+  }
   .form-row-2{display:grid;gap:16px;}
   @media(min-width:520px){.form-row-2{grid-template-columns:1fr 1fr;}}
 
@@ -933,33 +953,51 @@
               <div class="err">Please enter your course.</div>
             </div>
             <div class="field" data-field="why">
-              <label for="why">Why do you want to participate in Beyond the Degree? <span class="req">*</span></label>
-              <textarea id="why" name="why" required></textarea>
-              <div class="err">Please share a short answer.</div>
+              <label>Are you participating mainly to prepare for campus life before resumption? <span class="req">*</span></label>
+              <div class="yesno-group">
+                <label class="yesno-pill"><input type="radio" name="why" value="Yes" required><span>Yes</span></label>
+                <label class="yesno-pill"><input type="radio" name="why" value="No" required><span>No</span></label>
+              </div>
+              <div class="err">Please select yes or no.</div>
             </div>
             <div class="field" data-field="concern">
-              <label for="concern">What are you most concerned about concerning campus life? <span class="req">*</span></label>
-              <textarea id="concern" name="concern" required></textarea>
-              <div class="err">Please share a short answer.</div>
+              <label>Do you have concerns about adjusting to campus life? <span class="req">*</span></label>
+              <div class="yesno-group">
+                <label class="yesno-pill"><input type="radio" name="concern" value="Yes" required><span>Yes</span></label>
+                <label class="yesno-pill"><input type="radio" name="concern" value="No" required><span>No</span></label>
+              </div>
+              <div class="err">Please select yes or no.</div>
             </div>
             <div class="field" data-field="expect">
-              <label for="expect">What do you expect to gain from this programme? <span class="req">*</span></label>
-              <textarea id="expect" name="expect" required></textarea>
-              <div class="err">Please share a short answer.</div>
+              <label>Do you expect this programme to help you prepare for campus life and beyond? <span class="req">*</span></label>
+              <div class="yesno-group">
+                <label class="yesno-pill"><input type="radio" name="expect" value="Yes" required><span>Yes</span></label>
+                <label class="yesno-pill"><input type="radio" name="expect" value="No" required><span>No</span></label>
+              </div>
+              <div class="err">Please select yes or no.</div>
             </div>
             <div class="field" data-field="skill">
-              <label for="skill">What skill would you like to develop while in university? <span class="req">*</span></label>
-              <input type="text" id="skill" name="skill" required>
-              <div class="err">Please share a short answer.</div>
+              <label>Do you want to develop a skill you can use to earn while in school? <span class="req">*</span></label>
+              <div class="yesno-group">
+                <label class="yesno-pill"><input type="radio" name="skill" value="Yes" required><span>Yes</span></label>
+                <label class="yesno-pill"><input type="radio" name="skill" value="No" required><span>No</span></label>
+              </div>
+              <div class="err">Please select yes or no.</div>
             </div>
             <div class="field" data-field="earning">
-              <label for="earning">What do you currently know about earning from skills?</label>
-              <textarea id="earning" name="earning"></textarea>
+              <label>Do you currently know how to earn income from a skill?</label>
+              <div class="yesno-group">
+                <label class="yesno-pill"><input type="radio" name="earning" value="Yes"><span>Yes</span></label>
+                <label class="yesno-pill"><input type="radio" name="earning" value="No"><span>No</span></label>
+              </div>
             </div>
             <div class="field" data-field="fiveYears">
-              <label for="fiveYears">Where do you see yourself five years after graduation? <span class="req">*</span></label>
-              <textarea id="fiveYears" name="fiveYears" required></textarea>
-              <div class="err">Please share a short answer.</div>
+              <label>Do you have a clear plan for your life five years after graduation? <span class="req">*</span></label>
+              <div class="yesno-group">
+                <label class="yesno-pill"><input type="radio" name="fiveYears" value="Yes" required><span>Yes</span></label>
+                <label class="yesno-pill"><input type="radio" name="fiveYears" value="No" required><span>No</span></label>
+              </div>
+              <div class="err">Please select yes or no.</div>
             </div>
 
             <div class="step-actions">
@@ -1232,6 +1270,18 @@
     btn.addEventListener("click", () => goToStep(Number(btn.dataset.back)));
   });
 
+  // Fallback styling for browsers without :has() support
+  document.querySelectorAll('.yesno-pill input[type="radio"]').forEach(radio => {
+    radio.addEventListener("change", function(){
+      document.getElementsByName(radio.name).forEach(r => {
+        r.closest(".yesno-pill").classList.toggle("selected", r.checked);
+      });
+      // clear invalid state for this field once answered
+      const fieldWrap = radio.closest(".field");
+      if(fieldWrap) fieldWrap.classList.remove("invalid");
+    });
+  });
+
   const requiredFields = ["fullName","whatsapp","age","institution","course","why","concern","expect","skill","fiveYears"];
 
   form.addEventListener("submit", function(e){
@@ -1298,12 +1348,12 @@
       "Age: " + (d.age || ""),
       "Institution: " + (d.institution || ""),
       "Course: " + (d.course || ""),
-      "Why I want to participate: " + (d.why || ""),
-      "My main concern about campus: " + (d.concern || ""),
-      "What I expect to gain: " + (d.expect || ""),
-      "Skill I want to develop: " + (d.skill || ""),
-      "What I know about earning from skills: " + (d.earning || ""),
-      "Where I see myself in five years: " + (d.fiveYears || ""),
+      "Participating to prepare for campus life before resumption: " + (d.why || ""),
+      "Has concerns about adjusting to campus life: " + (d.concern || ""),
+      "Expects this programme to help prepare for campus life and beyond: " + (d.expect || ""),
+      "Wants to develop a skill to earn while in school: " + (d.skill || ""),
+      "Currently knows how to earn income from a skill: " + (d.earning || "Not answered"),
+      "Has a clear plan for life five years after graduation: " + (d.fiveYears || ""),
       "",
       "I have paid the " + CONFIG.priceDisplay + " registration fee and attached my payment receipt."
     ];
