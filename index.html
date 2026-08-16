@@ -1014,7 +1014,7 @@
         <div class="step-panel" data-step="4">
           <div class="confirm-box" id="preWaBlock">
             <h4 style="text-align:left;">Complete Your Registration</h4>
-            <p style="text-align:left;">Tap the button below. On most phones, WhatsApp will open with your registration image and message ready in one go — just pick your chat with Abu Zayd and send. If your device can't do that, the image will download automatically instead, and WhatsApp will open directly on Abu Zayd's number so you can attach it there.</p>
+            <p style="text-align:left;">Tap the button below. Your registration image will download automatically, and WhatsApp will open directly on Abu Zayd's chat — not a picker of apps or contacts. Just tap the attach icon there, select the image (it'll be the newest one in your gallery or downloads), and send.</p>
           </div>
           <div class="step-actions" id="waActionRow">
             <button type="button" class="btn btn-primary btn-block" id="sendWhatsappBtn">Send to WhatsApp Now</button>
@@ -1450,59 +1450,31 @@
 
   /* ==========================================================
      Sending the registration image straight into WhatsApp.
-     No website can force a file into another app automatically —
-     that choice always belongs to the participant. So this tries
-     the best available option first, and only falls back when a
-     device can't do better:
-
-     1) Native share (most Android/iOS browsers): the image AND
-        the message go together in one action. The participant
-        still taps WhatsApp then picks the chat themselves —
-        that final pick can't be automated by any website.
-     2) Fallback (older/desktop browsers): the image downloads
-        automatically and WhatsApp opens directly on Abu Zayd's
-        number with the message ready — the image just needs to
-        be attached manually in that already-open chat.
+     Always opens wa.me/<number> — Abu Zayd's exact chat, set in
+     CONFIG.adminWhatsappNumber — so the participant is never
+     shown a generic picker of apps or contacts. The image
+     downloads at the same moment; WhatsApp itself still requires
+     one manual tap to attach a file to a chat (no website can
+     skip that step), but which chat it lands in is fixed.
      ========================================================== */
   function buildWhatsappMessage(){
     return "As-salāmu alaykum warāhmatullāhi wabarakātuh. Here is the copy of my form, and shortly I will send proof of payment. Thanks for the opportunity, Abu Zayd.";
   }
 
-  async function sendRegistrationToWhatsapp(){
+  function sendRegistrationToWhatsapp(){
     const dataUrl = generateRegistrationImage(registrationData);
     const message = buildWhatsappMessage();
-    let sharedTogether = false;
 
-    try {
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      const file = new File([blob], "Beyond-the-Degree-Registration.png", { type: "image/png" });
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          text: message,
-          title: "Beyond the Degree Registration"
-        });
-        sharedTogether = true;
-      }
-    } catch (err) {
-      // Share was cancelled or unsupported — fall back below.
-      sharedTogether = false;
-    }
-
-    if (!sharedTogether) {
-      downloadImage(dataUrl, "Beyond-the-Degree-Registration.png");
-      const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + encodeURIComponent(message);
-      window.open(link, "_blank");
-    }
+    downloadImage(dataUrl, "Beyond-the-Degree-Registration.png");
+    const link = "https://wa.me/" + CONFIG.adminWhatsappNumber + "?text=" + encodeURIComponent(message);
+    window.open(link, "_blank");
   }
 
   document.getElementById("sendWhatsappBtn").addEventListener("click", function(){
-    sendRegistrationToWhatsapp().finally(function(){
-      document.getElementById("waActionRow").style.display = "none";
-      document.getElementById("preWaBlock").style.display = "none";
-      document.getElementById("finalConfirm").style.display = "block";
-    });
+    sendRegistrationToWhatsapp();
+    document.getElementById("waActionRow").style.display = "none";
+    document.getElementById("preWaBlock").style.display = "none";
+    document.getElementById("finalConfirm").style.display = "block";
   });
 
 })();
